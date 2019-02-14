@@ -1,11 +1,3 @@
-@if (!empty(Auth::user()))
-    {{$customer->role ?: '' }}
-    <br>
-    {{$customer->name}}
-    <br>
-    {{$customer->email}}
-    <br>
-@endif
 @extends('layouts.app')
 
 @section('content')
@@ -16,7 +8,9 @@
                     <img src="../img/person.png" alt="">
                     <section>
                         <small>ma 10 dec. 2019</small>
-                        <p>Alexandre Delen</p>
+                        <p>
+                            Alexandre Delen
+                        </p>
                     </section>
                 </header>
                 <main>

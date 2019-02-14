@@ -12,11 +12,10 @@ class GeneralController extends Controller
         if (Auth::check()) {
             $customer = Auth::user();
             if ($customer) {
-                return view('timeline', ['customer' => $customer]);
+                return view('timeline_client', ['customer' => $customer]);
             }
-            return view('timeline', ['customer' => $customer]);
+            return view('timeline_client', ['customer' => $customer]);
         }
-
     }
 
     public function portfolioOfClients($accountmanager = null, $customer = null)
