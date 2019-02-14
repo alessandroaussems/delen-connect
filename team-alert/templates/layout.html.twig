@@ -14,16 +14,17 @@
     <meta http-equiv="Content-Language" content="nl">
     <meta name="google" content="notranslate">
     <link href="{{ asset('scss/app.css') }}" rel="stylesheet">
+    <link rel="shortcut icon" type="image/png" href="/img/apple-touch-icon.png"/>
 </head>
-<div id="app">
+    {% if not app.user %}
+        <!-- DO NOT LOAD NAV HERE -->
+    {% else %}
     <nav>
-        {% if not app.user %}
-            {% else %}
-            <img src="{{ asset('img/logo_delen.svg') }}" alt="Logo">
-            <a href="{{ path('logout') }}"></a>
-        {% endif %}
+
+        <img src="{{ asset('img/logo_delen.svg') }}" alt="Logo">
+        <a href="{{ path('logout') }}"></a>
     </nav>
-</div>
+    {% endif %}
 {% block content %}{% endblock %}
 {% block javascripts %}
     <script type="text/javascript" >
@@ -32,6 +33,12 @@
         }
         function hideRemarkForm() {
             document.getElementById("remarkform").classList.add("hide");
+        }
+        function showEventForm() {
+            document.getElementById("eventform").classList.remove("hide");
+        }
+        function hideEventForm() {
+            document.getElementById("eventform").classList.add("hide");
         }
         function setVisible() {
             if(document.getElementById("eye").classList.contains("yes")){
