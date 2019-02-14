@@ -2,6 +2,14 @@ index:
     path: /
     defaults: { _controller: 'App\Controller\CategoryController::index' }
 
+client:
+    path: /client
+    defaults: { _controller: 'App\Controller\ClientController::index' }
+
+account_manager:
+    path: /account-manager
+    defaults: { _controller: 'App\Controller\ClientController::index' }
+
 login:
     path: /login
     defaults: { _controller: 'App\Controller\SecurityController::login' }
