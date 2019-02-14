@@ -6,12 +6,20 @@ class GeneralController extends Controller
 {
     public function timelineCustomer($customer)
     {
-        die;
+        if ($customer) {
+            dump($customer); die;
+        }
         return;
     }
 
-    public function portfolioForClients($accountmanager = null, $customer = null)
+    public function portfolioOfClients($accountmanager = null, $customer = null)
     {
+        if ($accountmanager) {
+            dump($accountmanager);
+        }
+        if ($customer) {
+            dump($customer);
+        }
         die;
         return;
     }

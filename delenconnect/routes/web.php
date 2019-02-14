@@ -22,6 +22,6 @@ Route::get('/{account-manager?}/portfolio', 'GeneralController@portfolioForClien
     ->name('account-manager-portfolio-clients');
 
 //CLIENT IN PORTFOLIO VAN MNGR INFO
-Route::get('/{account-manager?}/my-portfolio/{client}', 'GeneralController@timelineForManager')
+Route::get('/{account-manager?}/my-portfolio/{client}', 'GeneralController@portfolioOfClients')
     ->middleware('auth')
-    ->name('timeline-for-manager');
+    ->name('portfolio-of-clients');
