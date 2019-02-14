@@ -14,8 +14,16 @@
     <meta http-equiv="Content-Language" content="nl">
     <meta name="google" content="notranslate">
     <link href="{{ asset('scss/app.css') }}" rel="stylesheet">
-
 </head>
+<div id="app">
+    <nav>
+        {% if not app.user %}
+            {% else %}
+        <img src="{{ asset('img/logo_delen.svg') }}" alt="Logo">
+        <a href="{{ path('logout') }}"></a>
+        {% endif %}
+    </nav>
+</div>
 {% block content %}{% endblock %}
 {% block javascripts %}
     <script type="text/javascript" >

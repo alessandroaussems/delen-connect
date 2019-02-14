@@ -4,15 +4,14 @@ namespace App\Controller;
 
 use Symfony\Component\HttpFoundation\Request;
 
-class ClientController extends BaseController
+class TimelineController extends BaseController
 {
     public function index(Request $request)
     {
         $customers = $this->container->get('doctrine')->getManager()->getRepository('App:Customer')->findBy(
             array()
         );
-
-        return $this->render('partials/timeline.html.twig', array('customers' => $customers)
+        return $this->render('default/index.html.twig', array()
         );
     }
 }

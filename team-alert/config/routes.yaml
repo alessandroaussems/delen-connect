@@ -1,6 +1,6 @@
 index:
     path: /
-    defaults: { _controller: 'App\Controller\CategoryController::index' }
+    defaults: { _controller: 'App\Controller\TimelineController::index' }
 
 client:
     path: /client
@@ -8,6 +8,10 @@ client:
 
 account_manager:
     path: /account-manager
+    defaults: { _controller: 'App\Controller\ClientController::index' }
+
+client_timeline:
+    path: /my-timeline
     defaults: { _controller: 'App\Controller\ClientController::index' }
 
 login:

@@ -1,6 +1,5 @@
-@extends('layouts.app')
-
-@section('content')
+{% extends 'layout.html.twig' %}
+{% block content %}
 <div class="container-timeline clearfix">
     <ul>
         <li class="event birth"><span>Geboorte: ma 10 dec. 2019</span></li>
@@ -25,7 +24,7 @@
         </li>
         <li class="client">
             <header>
-                <img src="../img/person.png" alt="">
+                <img src="{{ asset('img/person.png') }}" alt="">
                 <section>
                     <small>ma 10 dec. 2019</small>
                     <p>
@@ -53,12 +52,18 @@
     </ul>
     <aside>
         <!-- IF CLIENT -->
-        @include("client_add_remark")
-        @include("client_hapiness")
+        {% if customer|default() %}
+            {% include 'partials/client_add_remark.html.twig' %}
+            {% if 'afspraak' in app.request.uri %}
+                {% include 'partials/client_happiness.html.twig' %}
+            {% endif %}
+        {% endif %}
     </aside>
     <aside>
         <!-- IF ACCOUNT -->
-        @include("account_add_remark")
+        {% if accountmanager|default() %}
+            {% include 'partials/account_add_remark.html.twig' %}
+        {% endif %}
     </aside>
 </div>
-@endsection
+{% endblock %}
