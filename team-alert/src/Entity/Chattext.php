@@ -29,6 +29,11 @@ class Chattext
      */
     private $text;
 
+    public function __toString()
+    {
+     return $this->getText() ?: 'New';
+    }
+
     public function getId(): ?int
     {
         return $this->id;

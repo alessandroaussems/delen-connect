@@ -50,7 +50,8 @@ class AppointmentAdmin extends AbstractAdmin
             }
             $formMapper
                 ->add('date', DateTimeType::class, array())
-                ->add('chattext', CollectionType::class)
+                ->add('chattext', CollectionType::class
+                )
         ;
     }
 

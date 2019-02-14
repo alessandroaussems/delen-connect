@@ -68,11 +68,9 @@ class ChattextAdmin extends AbstractAdmin
     protected function configureFormFields(FormMapper $formMapper)
     {
         $formMapper
-            ->add('text' )
-            ->add('appointment', CollectionType::class, array(), array(
-                'edit' => 'inline',
-                'inline' => 'table',
-            ));
+            ->add('appointment')
+            ->add('text')
+        ;
     }
 
     /**

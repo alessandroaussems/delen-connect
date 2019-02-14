@@ -58,7 +58,7 @@ class CustomerAdmin extends AbstractAdmin
     {
         parent::configureListFields($listMapper);
         $listMapper
-            ->add('id')
+            ->add('name')
             ->add('_action', 'actions', array(
                     'actions' => array(
                         'show' => array(),
@@ -96,7 +96,8 @@ class CustomerAdmin extends AbstractAdmin
     {
         parent::configureShowFields($showMapper);
         $showMapper
-            ->add('id');
+            ->add('id')
+            ->add('name');
     }
 }
 
