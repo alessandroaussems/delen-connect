@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-    <div class="container-timeline">
+    <div class="container-timeline clearfix">
         <ul>
             <li class="client">
                 <header>
@@ -32,8 +32,12 @@
             </li>
         </ul>
         <aside>
+            <!-- IF CLIENT -->
+            @include("client_add_remark")
         </aside>
         <aside>
+            <!-- IF ACCOUNT -->
+            @include("account_add_remark")
         </aside>
     </div>
 @endsection
