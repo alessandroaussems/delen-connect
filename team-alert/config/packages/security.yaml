@@ -22,5 +22,4 @@ security:
             logout_on_user_change: true
     access_control:
     - { path: ^/login, roles: IS_AUTHENTICATED_ANONYMOUSLY }
-    - { path: ^/nl/login, roles: IS_AUTHENTICATED_ANONYMOUSLY }
     - { path: ^/[a-z]+/admin, roles: ['ROLE_ADMIN', 'ROLE_SUPER_ADMIN'] }

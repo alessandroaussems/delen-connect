@@ -28,11 +28,11 @@
         <div class="container-login">
             <img src="{{ asset('img/logo_delen.svg') }}" alt="Logo">
             <form method="POST" action="{{ path('login') }}">
-                <label for="email">E-mail</label>
-                <input id="email" type="email" class="form-control" name="email" value="" required autofocus>
+                <label for="_username">Username</label>
+                <input id="_username" class="form-control" name="_username" value="" required autofocus>
             </span>
                 <img src="{{ asset('img/digicode.png') }}" alt="Digicode">
-                <input id="password" type="password" class="form-control" name="password" required placeholder="* * * *"><br>
+                <input id="password" type="password" class="form-control" name="_password" required placeholder="* * * *"><br>
                 <button type="submit" class="btn btn-primary">
                     Aanmelden
                 </button>
