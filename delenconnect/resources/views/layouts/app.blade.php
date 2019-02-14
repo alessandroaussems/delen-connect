@@ -33,5 +33,13 @@
             @yield('content')
         </main>
     </div>
+<script>
+    function showRemarkForm() {
+        document.getElementById("remarkform").classList.remove("hide");
+    }
+    function hideRemarkForm() {
+        document.getElementById("remarkform").classList.add("hide");
+    }
+</script>
 </body>
 </html>
