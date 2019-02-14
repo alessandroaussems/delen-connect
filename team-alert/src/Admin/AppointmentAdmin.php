@@ -6,17 +6,20 @@ use Sonata\AdminBundle\Admin\AbstractAdmin;
 use Sonata\AdminBundle\Datagrid\DatagridMapper;
 use Sonata\AdminBundle\Datagrid\ListMapper;
 use Sonata\AdminBundle\Form\FormMapper;
+use Sonata\AdminBundle\Form\Type\Filter\DateTimeType;
 use Sonata\AdminBundle\Show\ShowMapper;
 
 class AppointmentAdmin extends AbstractAdmin
 {
+    protected $parentAssociationMapping = 'customer';
+
     /**
      * @param DatagridMapper $datagridMapper
      */
     protected function configureDatagridFilters(DatagridMapper $datagridMapper)
     {
         $datagridMapper
-            ->add('id');
+            ->add('date');
     }
 
     /**
@@ -40,8 +43,13 @@ class AppointmentAdmin extends AbstractAdmin
      */
     protected function configureFormFields(FormMapper $formMapper)
     {
-        $formMapper
-            ->add('id');
+        if (!$this->hasParentFieldDescription()) {
+                $formMapper
+                    ->add('customer');
+            }
+            $formMapper
+                ->add('date', DateTimeType::class, array())
+        ;
     }
 
     /**
@@ -53,4 +61,3 @@ class AppointmentAdmin extends AbstractAdmin
             ->add('id');
     }
 }
-

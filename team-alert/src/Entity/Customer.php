@@ -30,14 +30,14 @@ class Customer
      */
     private $name;
 
-    public function getId(): ?int
-    {
-        return $this->id;
-    }
-
     public function __construct()
     {
         $this->appointment = new ArrayCollection();
+    }
+
+    public function getId(): ?int
+    {
+        return $this->id;
     }
 
     public function getName(): ?string

@@ -12,7 +12,7 @@ class ClientController extends BaseController
             array()
         );
 
-        return $this->render('partials/timeline.html.twig', array('customers' => $customers)
+        return $this->render('default/timeline.html.twig', array('customers' => $customers)
         );
     }
 
@@ -21,7 +21,7 @@ class ClientController extends BaseController
         $customers = $this->container->get('doctrine')->getManager()->getRepository('App:Customer')->findBy(
             array()
         );
-        return $this->render('partials/client_overview.html.twig', array('customers' => $customers)
+        return $this->render('default/client_overview.html.twig', array('customers' => $customers)
         );
     }
 }

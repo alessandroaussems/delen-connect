@@ -46,15 +46,11 @@ class EventListener
 
     public function onKernelException(GetResponseForExceptionEvent $event)
     {
-        $debug = false;
-        if ($debug || $this->container->getParameter("kernel.environment") != "dev") {
-            $code = $event->getException() instanceof HttpExceptionInterface ? $event->getException()->getStatusCode() : $event->getException()->getCode();
-            $message = $event->getException()->getMessage();
-            $response = new Response($this->container->get('twig')->render('exception/default.html.twig', array(
-                "code" => $code,
-                "message" => $message,
-            )));
-            $event->setResponse($response);
-        }
+        $code = $event->getException() instanceof HttpExceptionInterface ? $event->getException()->getStatusCode() : $event->getException()->getCode();
+        $message = $event->getException()->getMessage();
+        $response = new Response($this->container->get('twig')->render('default/login.html.twig', array(
+            "code" => $code,
+            "message" => $message,
+        )));
     }
 }

@@ -22,15 +22,15 @@ class Appointment
      */
     private $id;
 
-    public function getId(): ?int
-    {
-        return $this->id;
-    }
-
     /**
      * @ORM\Column(name="date", type="date", nullable=true)
      */
     private $date;
+
+    public function getId(): ?int
+    {
+        return $this->id;
+    }
 
     public function getDate(): ?\DateTimeInterface
     {
@@ -55,4 +55,5 @@ class Appointment
 
         return $this;
     }
+
 }
