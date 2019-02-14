@@ -1,4 +1,0 @@
-# ElFinder file manager
-elfinder:
-    resource: "@FMElfinderBundle/Resources/config/routing.yml"
-
