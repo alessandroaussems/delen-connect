@@ -54,11 +54,11 @@
         <aside>
             <!-- IF CLIENT -->
             @include("client_add_remark")
-            @include("client_hapiness")
+            {{--@include("client_hapiness")--}}
         </aside>
         <aside>
             <!-- IF ACCOUNT -->
-            @include("account_add_remark")
+            {{--@include("account_add_remark")--}}
         </aside>
     </div>
 @endsection

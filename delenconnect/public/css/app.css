@@ -372,6 +372,7 @@ nav a {
 }
 
 .container-timeline aside .add {
+  z-index: 1;
   left: 2.5%;
   top: 90vh;
   position: fixed;
@@ -426,6 +427,26 @@ nav a {
   cursor: pointer;
 }
 
+.container-timeline aside form #eye {
+  position: absolute;
+  display: block;
+  width: 10px;
+  height: 10px;
+  background-image: url(/img/eye.svg);
+  background-size: contain;
+  background-repeat: no-repeat;
+  top: 5%;
+  right: calc(2% + 10px + 2%);
+}
+
+.container-timeline aside form #eye.yes {
+  background-image: url(/img/eye_blue.svg);
+}
+
+.container-timeline aside form #eye:hover {
+  cursor: pointer;
+}
+
 .container-timeline aside form label {
   color: #28648a;
   display: block;
@@ -439,6 +460,21 @@ nav a {
   outline: none;
   width: 97.5%;
   height: 100px;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+       appearance: none;
+  background-color: #fff;
+  border: 1px solid #9b9b9b;
+  border-radius: 4px;
+  box-sizing: border-box;
+  color: #4a4a4a;
+  display: block;
+  font-size: 16px;
+  line-height: 20px;
+  min-height: 50px;
+  outline: 0;
+  padding: 15px 10px;
+  margin-bottom: 0.5rem;
 }
 
 .container-timeline aside form button {
