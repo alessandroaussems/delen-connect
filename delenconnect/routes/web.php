@@ -22,6 +22,6 @@ Route::get('/{account-manager?}/portfolio', 'GeneralController@portfolioForClien
     ->name('account-manager-portfolio-clients');
 
 //CLIENT IN PORTFOLIO VAN MNGR INFO
-Route::get('/{account-manager?}/my-portfolio/{client}', 'GeneralController@portfolioOfClients')
-    ->middleware('auth')
-    ->name('portfolio-of-clients');
+Route::get('/clients', function (){
+   return view("client_overview");
+});
