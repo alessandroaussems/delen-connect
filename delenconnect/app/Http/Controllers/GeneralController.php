@@ -14,8 +14,8 @@ class GeneralController extends Controller
             if ($customer) {
                 return view('timeline', ['customer' => $customer]);
             }
+            return view('timeline', ['customer' => $customer]);
         }
-        return view('timeline', ['customer' => $customer]);
 
     }
 
