@@ -135,3 +135,7 @@ nav > a:last-child {
   vertical-align: middle;
 }
 
+.container-login form button:hover {
+  cursor: pointer !important;
+}
+
