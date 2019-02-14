@@ -25,7 +25,7 @@ class CustomerAdmin extends AbstractAdmin
     protected function configureListFields(ListMapper $listMapper)
     {
         $listMapper
-            ->add('id')
+            ->add('name')
             ->add('_action', 'actions', array(
                 'actions' => array(
                     'show' => array(),
@@ -41,7 +41,7 @@ class CustomerAdmin extends AbstractAdmin
     protected function configureFormFields(FormMapper $formMapper)
     {
         $formMapper
-           ->add('id');
+            ->add('name');
     }
 
     /**

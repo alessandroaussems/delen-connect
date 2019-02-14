@@ -10,6 +10,12 @@ use Doctrine\ORM\Mapping as ORM;
 class Appointment
 {
     /**
+     * @ORM\ManyToOne(targetEntity="App\Entity\Customer", inversedBy="appointment", cascade={"merge","persist","refresh","detach"})
+     * @ORM\JoinTable(name="customer_appointment")
+     */
+    private $customer;
+
+    /**
      * @ORM\Id()
      * @ORM\GeneratedValue()
      * @ORM\Column(type="integer")
@@ -22,14 +28,6 @@ class Appointment
     }
 
     /**
-     * @ORM\ManyToOne(targetEntity="App\Entity\Customer", inversedBy="appointment", cascade={"merge","persist","refresh","detach"})
-     * @ORM\JoinTable(name="customer_appointment")
-     */
-    private $customer;
-
-    /**
-     * @var date
-     *
      * @ORM\Column(name="date", type="date", nullable=true)
      */
     private $date;

@@ -12,21 +12,16 @@ use Doctrine\ORM\Mapping as ORM;
 class Customer
 {
     /**
+     * @ORM\OneToMany(targetEntity="App\Entity\Appointment", mappedBy="customer", cascade={"all"}, orphanRemoval=true)
+     */
+    private $appointment;
+
+    /**
      * @ORM\Id()
      * @ORM\GeneratedValue()
      * @ORM\Column(type="integer")
      */
     private $id;
-
-    public function getId(): ?int
-    {
-        return $this->id;
-    }
-
-    /**
-     * @ORM\OneToMany(targetEntity="App\Entity\Appointment", mappedBy="customer", cascade={"all"}, orphanRemoval=true)
-     */
-    private $appointment;
 
     /**
      * @var string
@@ -34,6 +29,11 @@ class Customer
      * @ORM\Column(name="name", type="string", length=255, nullable=true)
      */
     private $name;
+
+    public function getId(): ?int
+    {
+        return $this->id;
+    }
 
     public function __construct()
     {

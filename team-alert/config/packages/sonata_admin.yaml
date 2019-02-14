@@ -1,6 +1,6 @@
 sonata_admin:
     persist_filters: true
-    title: 'Delen-connect'
+    title: 'Delen onnect'
     options:
         title_mode: 'single_image'
         html5_validate:    true
@@ -12,8 +12,9 @@ sonata_admin:
     dashboard:
         blocks:
         - { type: sonata.admin.block.admin_list, position: left }
-    title_logo: 'images/delenconnect'
+    title_logo: 'img/logo_delen.svg'
     templates:
+#        dashboard:''
     show_mosaic_button: false
 
 sonata_block:
