@@ -1,0 +1,157 @@
+.app-overlay {
+    background: #f5f5f5;
+    border: 20px solid #f5f5f5;
+    height: 100%;
+    left: 0;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 9999
+}
+
+.app-http-loader {
+    left: 5px;
+    pointer-events: none;
+    position: fixed;
+    top: 5px;
+    z-index: 10000
+}
+
+.app-http-loader .c-loader {
+    border-width: 2px;
+    height: 15px;
+    margin: 0;
+    width: 15px
+}
+
+.app-logging-button {
+    height: 22px;
+    opacity: 0;
+    position: absolute;
+    width: 22px;
+    z-index: 100000
+}
+
+.app-logging-button--top {
+    top: 0
+}
+
+.app-logging-button--bottom {
+    bottom: 0
+}
+
+.app-logging-button--left {
+    left: 0
+}
+
+.app-logging-button--right {
+    right: 0
+}
+
+.app-browser-startup-loader.c-loader {
+    left: 50%;
+    margin-left: -15px;
+    margin-top: -15px;
+    position: absolute;
+    top: 50%
+}
+
+@media (max-height: 480px) {
+    .app-iphone4-hidden {
+        display: none
+    }
+}
+
+.app-nerd-analytics {
+    background-color: #000;
+    bottom: 50px;
+    color: #ff0;
+    display: none;
+    font-weight: 700;
+    left: 0;
+    padding: 5px;
+    position: fixed;
+    z-index: 10000
+}
+
+.app-nerd-analytics--visible .app-nerd-analytics {
+    display: block
+}
+
+.app-pdf-previewer {
+    display: block;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    width: 100%
+}
+
+.baec5a81-e4d6-4674-97f3-e9220f0136c1 > a {
+    display: none !important
+}
+
+@media screen and (max-height: 760px) {
+    .app-advertisement-small-screen-digipass {
+        display: none
+    }
+}
+
+.app-placeholder--chart {
+    min-height: 239px
+}
+
+.app-placeholder--registration-loading {
+    min-height: 333px
+}
+
+.app-placeholder--asset-composition {
+    min-height: 250px
+}
+
+.app-placeholder--contract-selection {
+    min-height: 96px
+}
+
+.app-placeholder--contract-selection-loader {
+    height: 96px
+}
+
+.app-placeholder--bank-statements-overview-loader {
+    padding: 161px 0
+}
+
+.app-placeholder--load-more {
+    height: 40px
+}
+
+.app-selection-box {
+    background-color: #fff
+}
+
+.app-selection-box:hover {
+    background-color: #f5f5f5
+}
+
+.app-allow-click-through {
+    pointer-events: none
+}
+
+@media screen and (max-width: 360px) {
+    .u-12-12\@small {
+        width: 100% !important
+    }
+
+    .u-align--center\@small {
+        text-align: center !important
+    }
+}
+
+.c-promo-banner__device {
+    bottom: -35px !important
+}
+
+@media screen and (max-width: 413px) {
+    .c-select--border {
+        min-width: unset
+    }
+}
