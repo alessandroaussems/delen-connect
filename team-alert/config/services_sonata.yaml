@@ -1,1 +1,14 @@
 services:
+    app.admin.appointment:
+        class: App\Admin\AppointmentAdmin
+        arguments: [~, App\Entity\Pages, Sonata]
+        tags:
+            - { name: sonata.admin, manager_type: orm, group: 'Website', label: 'Pagina', icon: '<i class="fa fa-chrome"></i>' }
+        public: true
+
+    app.admin.blocks:
+        class: App\Admin\CustomerAdmin
+        arguments: [~, App\Entity\Customer, PixSortableBehaviorBundle:SortableAdmin]
+        tags:
+            - { name: sonata.admin, manager_type: orm, group: 'Website', label: 'Blokken', icon: '<i class="fa fa-chrome"></i>', show_in_dashboard: true }
+        public: true
