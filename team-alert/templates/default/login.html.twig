@@ -1,26 +1,44 @@
 {% extends 'layout.html.twig' %}
 
 {% block content %}
-    <div class="container-100-100">
-        <div class="wrap-100">
-            <form class="right-part" action="{{ path('login') }}" method="POST">
-                <div class="wrap-full-width first-wrap-full-width" style="margin-bottom:20px;">
-                    <input class="full-width" id="username" autocomplete="username" name="_username"
-                           value="{{ last_username }}" placeholder="{{ 'User'|trans }}"/>
-                    <span class="focus-full-width"></span>
-                </div>
-                <div class="wrap-full-width second-wrap-full-width" style="margin-bottom:20px;">
-                    <input class="full-width" type="password" id="password" name="_password" placeholder="{{ 'Password'|trans }}">
-                    <span class="focus-full-width"></span>
-                </div>
-                <div class="container-right-part-btn">
-                    <button type="submit" class="right-part-btn">
-                        Inloggen
-                    </button>
-                </div>
+    {#<div class="container-100-100">#}
+        {#<div class="wrap-100">#}
+            {#<form class="right-part" action="{{ path('login') }}" method="POST">#}
+                {#<div class="wrap-full-width first-wrap-full-width" style="margin-bottom:20px;">#}
+                    {#<input class="full-width" id="username" autocomplete="username" name="_username"#}
+                           {#value="{{ last_username }}" placeholder="{{ 'User'|trans }}"/>#}
+                    {#<span class="focus-full-width"></span>#}
+                {#</div>#}
+                {#<div class="wrap-full-width second-wrap-full-width" style="margin-bottom:20px;">#}
+                    {#<input class="full-width" type="password" id="password" name="_password" placeholder="{{ 'Password'|trans }}">#}
+                    {#<span class="focus-full-width"></span>#}
+                {#</div>#}
+                {#<div class="container-right-part-btn">#}
+                    {#<button type="submit" class="right-part-btn">#}
+                        {#Inloggen#}
+                    {#</button>#}
+                {#</div>#}
+            {#</form>#}
+            {#<div class="left-part" style="background-image: url('{{ asset('') }}');"></div>#}
+        {#</div>#}
+    {#</div>#}
+
+
+    <main>
+        <div class="container-login">
+            <img src="{{ asset('img/logo_delen.svg') }}" alt="Logo">
+            <form method="POST" action="{{ path('login') }}">
+                <label for="email">E-mail</label>
+                <input id="email" type="email" class="form-control" name="email" value="" required autofocus>
+            </span>
+                <img src="{{ asset('img/digicode.png') }}" alt="Digicode">
+                <input id="password" type="password" class="form-control" name="password" required placeholder="* * * *"><br>
+                <button type="submit" class="btn btn-primary">
+                    Aanmelden
+                </button>
             </form>
-            <div class="left-part" style="background-image: url('{{ asset(ento_logo_png) }}');"></div>
         </div>
+    </main>
     </div>
 {% endblock %}
 
