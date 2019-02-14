@@ -8,8 +8,8 @@ use Sonata\AdminBundle\Admin\AbstractAdmin;
 use Sonata\AdminBundle\Datagrid\DatagridMapper;
 use Sonata\AdminBundle\Datagrid\ListMapper;
 use Sonata\AdminBundle\Form\FormMapper;
-use Sonata\AdminBundle\Form\Type\CollectionType;
 use Sonata\AdminBundle\Show\ShowMapper;
+use Sonata\CoreBundle\Form\Type\CollectionType;
 
 class CustomerAdmin extends AbstractAdmin
 {
@@ -38,6 +38,7 @@ class CustomerAdmin extends AbstractAdmin
      */
     protected function configureDatagridFilters(DatagridMapper $datagridMapper)
     {
+        parent::configureDatagridFilters($datagridMapper);
         $datagridMapper
             ->add('id');
     }
@@ -47,6 +48,7 @@ class CustomerAdmin extends AbstractAdmin
      */
     protected function configureListFields(ListMapper $listMapper)
     {
+        parent::configureListFields($listMapper);
         $listMapper
             ->add('name')
             ->add('_action', 'actions', array(
@@ -65,11 +67,10 @@ class CustomerAdmin extends AbstractAdmin
     {
         $formMapper
             ->add('name')
-            ->add('appointment', CollectionType::class, array(), [
+            ->add('appointment', CollectionType::class, array(), array(
                 'edit' => 'inline',
                 'inline' => 'table',
-                'sortable' => 'sort',
-            ]);
+            ));
     }
 
     /**
@@ -77,6 +78,7 @@ class CustomerAdmin extends AbstractAdmin
      */
     protected function configureShowFields(ShowMapper $showMapper)
     {
+        parent::configureShowFields($showMapper);
         $showMapper
             ->add('id');
     }

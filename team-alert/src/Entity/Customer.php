@@ -35,6 +35,11 @@ class Customer
         $this->appointment = new ArrayCollection();
     }
 
+    public function __toString()
+    {
+        return $this->getName() ?: 'New';
+    }
+
     public function getId(): ?int
     {
         return $this->id;
