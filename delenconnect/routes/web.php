@@ -4,16 +4,24 @@ Auth::routes();
 
 Route::get('/', 'HomeController@index')
     ->middleware('auth')
-    ->name('delen-connect-home');;
+    ->name('home');
 
-Route::get('/overzicht-gebeurtenissen', 'HomeController@index')
+//
+Route::get('/overview', 'GeneralController@index')
     ->middleware('auth')
-    ->name('delen-connect-gebeurtenissen');
+    ->name('overview');
 
-Route::get('/{?customer}/mijn-tijdlijn', 'HomeController@timelineCustomer')
+//TIMELINE CLIENT
+Route::get('/{client?}/my-timeline', 'GeneralController@timelineCustomer')
     ->middleware('auth')
-    ->name('tijdlijn-voor-klant');
+    ->name('timeline-client');
 
-Route::get('/{?account-manager}/mijn-klanten', 'HomeController@customers')
+//ALLE CLIENTEN GEKOPPELD AAN ACC MNGR
+Route::get('/{account-manager?}/portfolio', 'GeneralController@portfolioForClients')
     ->middleware('auth')
-    ->name('tijdlijn-voor-account-manager');
+    ->name('account-manager-portfolio-clients');
+
+//CLIENT IN PORTFOLIO VAN MNGR INFO
+Route::get('/{account-manager?}/my-portfolio/{client}', 'GeneralController@timelineForManager')
+    ->middleware('auth')
+    ->name('timeline-for-manager');
