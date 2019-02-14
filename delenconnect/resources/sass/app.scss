@@ -1,5 +1,5 @@
 // Variables
-@import 'variables';
+@import 'slider';
 
 $sans: 'Source Sans Pro', sans-serif;
 $code: 'Source Code Pro', monospace;
@@ -184,15 +184,53 @@ nav{
           line-height: 30px;
           color: #9b9b9b;
         }
-        &::before{
-          content: '';
-          display: block;
-          width: 30px;
-          height: 30px;
-          background-image: url(/img/calendar.svg);
-          background-size: contain;
-          background-repeat: no-repeat;
-          margin-right: 5%;
+        &.birth{
+          &::before{
+            content: '';
+            display: block;
+            width: 30px;
+            height: 30px;
+            background-image: url(/img/birth.svg);
+            background-size: contain;
+            background-repeat: no-repeat;
+            margin-right: 5%;
+          }
+        }
+        &.appointment{
+          &::before{
+            content: '';
+            display: block;
+            width: 30px;
+            height: 30px;
+            background-image: url(/img/calendar.svg);
+            background-size: contain;
+            background-repeat: no-repeat;
+            margin-right: 5%;
+          }
+        }
+        &.marriage{
+          &::before{
+            content: '';
+            display: block;
+            width: 30px;
+            height: 30px;
+            background-image: url(/img/ring.svg);
+            background-size: contain;
+            background-repeat: no-repeat;
+            margin-right: 5%;
+          }
+        }
+        &.new{
+          &::before{
+            content: '';
+            display: block;
+            width: 30px;
+            height: 30px;
+            background-image: url(/img/lamp.svg);
+            background-size: contain;
+            background-repeat: no-repeat;
+            margin-right: 5%;
+          }
         }
       }
       header{
@@ -217,6 +255,26 @@ nav{
       }
       main{
         color: #4a4a4a;
+        .filler{
+          position: relative;
+          margin-top: 1rem;
+          width: 100%;
+          height: 30px;
+          background-color: #cccccc;
+          p{
+            margin: 0;
+            margin-left: 2.5%;
+            position: absolute;
+            color: #4a4a4a;
+            top: 50%;
+            transform: translateY(-50%);
+          }
+          .fill{
+            display: block;
+            height: 30px;
+            background-color: #91b1c4;
+          }
+        }
       }
     }
   }
@@ -305,6 +363,14 @@ nav{
         &:hover{
           cursor: pointer;
         }
+      }
+      .info{
+        font-size: 14px;
+        color: #9b9b9b;
+        margin-top: .5rem;
+        display: flex;
+        align-content: center;
+        justify-content: space-between;
       }
     }
   }
