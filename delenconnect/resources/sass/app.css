@@ -13,17 +13,19 @@ nav {
   background-image: linear-gradient(90deg, #28648a, #004160);
   display: flex;
   align-items: center;
-  justify-content: center; }
-  nav > a:first-child {
-    background-image: url(/img/logo_suisse.svg);
-    background-size: contain;
-    background-repeat: no-repeat;
+  justify-content: space-between; }
+  nav img {
+    width: 15%;
+    margin-left: 2.5%; }
+  nav a {
+    border-radius: 4px;
     display: block;
     height: 50px;
-    width: 150px; }
-  nav > a:last-child {
-    margin-right: 2rem;
-    color: #6ec60f; }
+    width: 50px;
+    background-image: url(/img/logout.png);
+    background-size: cover;
+    background-repeat: no-repeat;
+    margin-right: 2.5%; }
 
 .container-login {
   background-image: linear-gradient(180deg, #28648a, #004160);

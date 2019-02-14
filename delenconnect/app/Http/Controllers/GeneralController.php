@@ -2,14 +2,21 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\Support\Facades\Auth;
+
 class GeneralController extends Controller
 {
-    public function timelineCustomer($customer)
+    public function timelineCustomer()
     {
-        if ($customer) {
-            dump($customer); die;
+        $customer = '';
+        if (Auth::check()) {
+            $customer = Auth::user();
+            if ($customer) {
+                return view('timeline', ['customer' => $customer]);
+            }
         }
-        return;
+        return view('timeline', ['customer' => $customer]);
+
     }
 
     public function portfolioOfClients($accountmanager = null, $customer = null)

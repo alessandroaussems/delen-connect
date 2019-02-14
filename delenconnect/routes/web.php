@@ -12,7 +12,7 @@ Route::get('/overview', 'GeneralController@index')
     ->name('overview');
 
 //TIMELINE CLIENT
-Route::get('/{client?}/my-timeline', 'GeneralController@timelineCustomer')
+    Route::get('/my-timeline', 'GeneralController@timelineCustomer')
     ->middleware('auth')
     ->name('timeline-client');
 
