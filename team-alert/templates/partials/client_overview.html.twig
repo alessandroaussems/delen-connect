@@ -1,0 +1,16 @@
+{% extends 'layout.html.twig' %}
+
+{% block content %}
+<div class="container-clients clearfix">
+    <ul>
+        {% for client in clients|default() %}
+            <li>
+                <a href="#"><img src="{{ asset('/img/person.png') }}">
+                    <p>Alexander Delen</p>
+                    <span></span>
+                </a>
+            </li>
+        {% endfor %}
+    </ul>
+</div>
+{% endblock %}

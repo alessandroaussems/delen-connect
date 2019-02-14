@@ -19,8 +19,8 @@
     <nav>
         {% if not app.user %}
             {% else %}
-        <img src="{{ asset('img/logo_delen.svg') }}" alt="Logo">
-        <a href="{{ path('logout') }}"></a>
+            <img src="{{ asset('img/logo_delen.svg') }}" alt="Logo">
+            <a href="{{ path('logout') }}"></a>
         {% endif %}
     </nav>
 </div>
@@ -41,7 +41,6 @@
                 document.getElementById("eye").classList.add("yes");
                 document.getElementById("eyevalue").setAttribute('checked', 'checked');
             }
-
         }
     </script>
 {% endblock %}
