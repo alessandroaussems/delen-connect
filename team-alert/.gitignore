@@ -2,3 +2,4 @@ vendor/*
 var/cache/*
 var/log
 .sass-cache/*
+.env
