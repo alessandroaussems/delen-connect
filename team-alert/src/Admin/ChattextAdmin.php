@@ -85,4 +85,3 @@ class ChattextAdmin extends AbstractAdmin
             ->add('id');
     }
 }
-

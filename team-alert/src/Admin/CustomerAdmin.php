@@ -40,7 +40,15 @@ class CustomerAdmin extends AbstractAdmin
     {
         parent::configureDatagridFilters($datagridMapper);
         $datagridMapper
-            ->add('id');
+            ->add('id')
+            ->add("yearOfBirth")
+            ->add("yearOfDeath")
+            ->add("city")
+            ->add("country")
+            ->add("sex")
+            ->add("language")
+            ->add("type")
+            ->add("statRv");
     }
 
     /**
@@ -50,14 +58,14 @@ class CustomerAdmin extends AbstractAdmin
     {
         parent::configureListFields($listMapper);
         $listMapper
-            ->add('name')
+            ->add('id')
             ->add('_action', 'actions', array(
-                'actions' => array(
-                    'show' => array(),
-                    'edit' => array(),
-                    'delete' => array(),
-                )
-            ));
+                    'actions' => array(
+                        'show' => array(),
+                        'edit' => array(),
+                        'delete' => array(),
+                    )
+                ));
     }
 
     /**
@@ -66,7 +74,15 @@ class CustomerAdmin extends AbstractAdmin
     protected function configureFormFields(FormMapper $formMapper)
     {
         $formMapper
-            ->add('name')
+            ->add("name")
+            ->add("yearOfBirth")
+            ->add("yearOfDeath")
+            ->add("city")
+            ->add("country")
+            ->add("sex")
+            ->add("language")
+            ->add("type")
+            ->add("statRv")
             ->add('appointment', CollectionType::class, array(), array(
                 'edit' => 'inline',
                 'inline' => 'table',
