@@ -5,9 +5,17 @@ services:
         tags:
             - { name: sonata.admin, manager_type: orm, group: 'Relations', label: 'Klant', icon: '<i class="fa fa-user"></i>', show_in_dashboard: true }
         public: true
+
     app.admin.appointment:
         class: App\Admin\AppointmentAdmin
         arguments: [~, App\Entity\Appointment,  SonataAdminBundle:CRUD]
         tags:
             - { name: sonata.admin, manager_type: orm, group: 'Relations', label: 'Afspraken', icon: '<i class="fa fa-user"></i>', show_in_dashboard: true }
+        public: true
+
+    app.admin.chattext:
+        class: App\Admin\ChattextAdmin
+        arguments: [~, App\Entity\Chattext,  SonataAdminBundle:CRUD]
+        tags:
+            - { name: sonata.admin, manager_type: orm, group: 'Relations', label: 'Chat text', icon: '<i class="fa fa-user"></i>', show_in_dashboard: true }
         public: true

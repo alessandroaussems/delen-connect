@@ -2,25 +2,47 @@
 
 namespace App\Admin;
 
+use App\Entity\Appointment;
+use App\Entity\Chattext;
 use Sonata\AdminBundle\Admin\AbstractAdmin;
 use Sonata\AdminBundle\Datagrid\DatagridMapper;
 use Sonata\AdminBundle\Datagrid\ListMapper;
 use Sonata\AdminBundle\Form\FormMapper;
-use Sonata\AdminBundle\Form\Type\Filter\DateTimeType;
 use Sonata\AdminBundle\Show\ShowMapper;
 use Sonata\CoreBundle\Form\Type\CollectionType;
 
-class AppointmentAdmin extends AbstractAdmin
+class ChattextAdmin extends AbstractAdmin
 {
-    protected $parentAssociationMapping = 'customer';
+    protected $parentAssociationMapping = 'appointment';
+
+    public function prePersist($object)
+    {
+        /** @var Chattext $object */
+        parent::prePersist($object);
+        /** @var Appointment $appointment */
+        foreach ($object->getAppointment() as $appointment) {
+            $appointment->setCustomer($object);
+        }
+    }
+
+    public function preUpdate($object)
+    {
+        /** @var Chattext $object */
+        parent::preUpdate($object);
+        /** @var Appointment $appointment */
+        foreach ($object->getAppointment() as $appointment) {
+            $appointment->setCustomer($object);
+        }
+    }
 
     /**
      * @param DatagridMapper $datagridMapper
      */
     protected function configureDatagridFilters(DatagridMapper $datagridMapper)
     {
+        parent::configureDatagridFilters($datagridMapper);
         $datagridMapper
-            ->add('date');
+            ->add('id');
     }
 
     /**
@@ -28,8 +50,9 @@ class AppointmentAdmin extends AbstractAdmin
      */
     protected function configureListFields(ListMapper $listMapper)
     {
+        parent::configureListFields($listMapper);
         $listMapper
-            ->add('id')
+            ->add('text')
             ->add('_action', 'actions', array(
                 'actions' => array(
                     'show' => array(),
@@ -44,14 +67,12 @@ class AppointmentAdmin extends AbstractAdmin
      */
     protected function configureFormFields(FormMapper $formMapper)
     {
-        if (!$this->hasParentFieldDescription()) {
-                $formMapper
-                    ->add('customer');
-            }
-            $formMapper
-                ->add('date', DateTimeType::class, array())
-                ->add('chattext', CollectionType::class)
-        ;
+        $formMapper
+            ->add('text' )
+            ->add('appointment', CollectionType::class, array(), array(
+                'edit' => 'inline',
+                'inline' => 'table',
+            ));
     }
 
     /**
@@ -59,7 +80,9 @@ class AppointmentAdmin extends AbstractAdmin
      */
     protected function configureShowFields(ShowMapper $showMapper)
     {
+        parent::configureShowFields($showMapper);
         $showMapper
             ->add('id');
     }
 }
+
