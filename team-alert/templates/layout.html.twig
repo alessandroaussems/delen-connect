@@ -16,7 +16,13 @@
 </head>
 {% block content %}{% endblock %}
 {% block javascripts %}
-    <script type="text/javascript">
+    <script type="text/javascript" >
+        function showRemarkForm() {
+            document.getElementById("remarkform").classList.remove("hide");
+        }
+        function hideRemarkForm() {
+            document.getElementById("remarkform").classList.add("hide");
+        }
     </script>
 {% endblock %}
 </body>

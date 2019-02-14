@@ -1,0 +1,11 @@
+{% block content %}
+    {% if customer|default() %}
+        ID => {{ customer.id ?: '# EMPTY ID #' }}
+        <br>
+        ROLE => {{ customer.role ?: '# EMPTY ROLE #' }}
+        <br>
+        NAME => {{ customer.name ?: '# EMPTY NAME #' }}
+        <br>
+        E-MAIL => {{ customer.email ?: '# EMPTY EMAIL #' }}
+    {% endif %}
+{% endblock %}
