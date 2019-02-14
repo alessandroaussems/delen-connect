@@ -52,12 +52,12 @@
     </ul>
     <aside>
         <!-- IF CLIENT -->
-        {% if customer|default() %}
-            {% include 'partials/client_add_remark.html.twig' %}
-            {% if 'afspraak' in app.request.uri %}
+        {#{% if customer|default() %}#}
+            {#{% include 'partials/client_add_remark.html.twig' %}#}
+            {#{% if 'afspraak' in app.request.uri %}#}
                 {% include 'partials/client_happiness.html.twig' %}
-            {% endif %}
-        {% endif %}
+            {#{% endif %}#}
+        {#{% endif %}#}
     </aside>
     <aside>
         <!-- IF ACCOUNT -->
