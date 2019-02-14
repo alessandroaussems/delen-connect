@@ -40,6 +40,16 @@
     function hideRemarkForm() {
         document.getElementById("remarkform").classList.add("hide");
     }
+    function setVisible() {
+        if(document.getElementById("eye").classList.contains("yes")){
+            document.getElementById("eye").classList.remove("yes");
+            document.getElementById("eyevalue").removeAttribute('checked');
+        }else{
+            document.getElementById("eye").classList.add("yes");
+            document.getElementById("eyevalue").setAttribute('checked', 'checked');
+        }
+
+    }
 </script>
 </body>
 </html>
