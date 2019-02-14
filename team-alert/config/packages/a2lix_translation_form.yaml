@@ -1,0 +1,7 @@
+a2lix_translation_form:
+    locale_provider: 'default'
+    locales: [nl]
+    default_locale: nl
+    required_locales: [nl]
+    manager_registry: 'doctrine'
+    templating: "@A2lixTranslationForm/default.html.twig"

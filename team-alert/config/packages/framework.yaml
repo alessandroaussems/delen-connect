@@ -1,0 +1,10 @@
+framework:
+    templating:
+        engines: ['twig']
+    secret: '%env(APP_SECRET)%'
+    default_locale: nl
+    csrf_protection: true
+    session:
+        handler_id: ~
+    php_errors:
+        log: true

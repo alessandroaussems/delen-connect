@@ -1,0 +1,40 @@
+{
+    "name": "components/elfinder",
+    "type": "component",
+    "description": "ElFinder FileManager",
+    "keywords": ["elfinder","file manager"],
+    "license": "BSD-3-Clause",
+    "authors": [
+        {
+            "name": "ElFinder Team",
+            "homepage": "https://github.com/Studio-42/elFinder"
+        },
+        {
+            "name": "Al Ganiev",
+            "email": "helios.ag@gmail.com"
+        }
+    ],
+    "require": {
+        "robloach/component-installer": "*",
+        "components/jquery": ">=1.12.4 <4.0",
+        "components/jqueryui": ">=1.12.0"
+    },
+    "extra": {
+        "component": {
+            "scripts": [
+                "dist/js/elfinder.min.js"
+            ],
+            "styles": [
+                "dist/css/elfinder.min.css",
+                "dist/css/theme.css"
+            ],
+            "files": [
+                "dist/img/*.png",
+                "dist/img/*.svg",
+                "dist/img/*.gif",
+                "dist/js/i18n/*.js"
+            ]
+        }
+    },
+    "minimum-stability": "dev"
+}

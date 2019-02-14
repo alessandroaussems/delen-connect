@@ -1,0 +1,25 @@
+
+translation_index:
+    path: /_trans/{configName}
+    methods: [GET]
+    defaults:  { _controller: TranslationBundle:WebUI:index, configName: null }
+
+translation_show:
+    path: /_trans/{configName}/{locale}/{domain}
+    methods: [GET]
+    defaults:  { _controller: TranslationBundle:WebUI:show }
+
+translation_create:
+    path: /_trans/{configName}/{locale}/{domain}/new
+    methods: [POST]
+    defaults:  { _controller: TranslationBundle:WebUI:create }
+
+translation_edit:
+    path: /_trans/{configName}/{locale}/{domain}
+    methods: [POST]
+    defaults:  { _controller: TranslationBundle:WebUI:edit }
+
+translation_delete:
+    path: /_trans/{configName}/{locale}/{domain}
+    methods: [DELETE]
+    defaults:  { _controller: TranslationBundle:WebUI:delete }

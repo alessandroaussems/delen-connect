@@ -1,0 +1,24 @@
+sonata_admin:
+    persist_filters: true
+    title: 'Delen-connect'
+    options:
+        title_mode: 'single_image'
+        html5_validate:    true
+        confirm_exit:      true
+        use_select2:       true
+        use_icheck:        true
+        use_bootlint:      false
+        use_stickyforms:   true
+    dashboard:
+        blocks:
+        - { type: sonata.admin.block.admin_list, position: left }
+    title_logo: 'images/delenconnect'
+    templates:
+    show_mosaic_button: false
+
+sonata_block:
+    blocks:
+        sonata.admin.block.admin_list:
+            contexts: [admin]
+        sonata.admin.block.search_result:
+            contexts: [admin]

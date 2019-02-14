@@ -1,0 +1,6 @@
+twig:
+    paths: ['%kernel.project_dir%/templates']
+    strict_variables: '%kernel.debug%'
+    globals:
+        config: '@app.config'
+        ento_intro_placeholder: 'images/ento/ento_intro-placeholder.jpg'

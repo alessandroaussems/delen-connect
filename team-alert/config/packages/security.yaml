@@ -1,0 +1,26 @@
+security:
+    encoders:
+        Symfony\Component\Security\Core\User\User: plaintext
+    providers:
+        in_memory:
+            memory:
+                users:
+                    robbert: { password: XSJZ99982, roles: [ 'ROLE_ADMIN', 'ROLE_SUPER_ADMIN' ] }
+                    alessandro: { password: XSJZ99982, roles: [ 'ROLE_ADMIN', 'ROLE_SUPER_ADMIN' ] }
+    firewalls:
+        dev:
+            pattern: ^/(_(profiler|wdt)|css|images|js)/
+            security: false
+        main:
+            anonymous: true
+            form_login:
+                login_path: login
+                check_path: login
+                default_target_path: sonata_admin_dashboard
+            logout:
+                path: logout
+            logout_on_user_change: true
+    access_control:
+    - { path: ^/login, roles: IS_AUTHENTICATED_ANONYMOUSLY }
+    - { path: ^/nl/login, roles: IS_AUTHENTICATED_ANONYMOUSLY }
+    - { path: ^/[a-z]+/admin, roles: ['ROLE_ADMIN', 'ROLE_SUPER_ADMIN'] }

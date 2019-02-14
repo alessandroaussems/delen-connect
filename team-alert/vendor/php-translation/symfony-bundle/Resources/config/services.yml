@@ -1,0 +1,68 @@
+services:
+  php_translation.catalogue_fetcher:
+    public: true
+    class: Translation\Bundle\Catalogue\CatalogueFetcher
+    arguments: ["@translation.loader_or_reader"]
+
+  php_translation.catalogue_writer:
+    public: true
+    class: Translation\Bundle\Catalogue\CatalogueWriter
+    arguments: ["@translation.writer", "%php_translation.default_locale%"]
+
+  php_translation.storage.abstract:
+    class: Translation\Bundle\Service\StorageService
+    abstract: true
+    arguments: ["@php_translation.catalogue_fetcher", "@php_translation.catalogue_writer", ~]
+
+  php_translation.catalogue_manager:
+    public: true
+    class: Translation\Bundle\Catalogue\CatalogueManager
+
+  php_translation.extractor:
+    class: Translation\Extractor\Extractor
+
+  php_translation.storage_manager:
+    public: true
+    class: Translation\Bundle\Service\StorageManager
+
+  php_translation.configuration_manager:
+    public: true
+    class: Translation\Bundle\Service\ConfigurationManager
+
+  php_translation.importer:
+    public: true
+    class: Translation\Bundle\Service\Importer
+    arguments: ["@php_translation.extractor", "@twig"]
+
+  php_translation.cache_clearer:
+    public: true
+    class: Translation\Bundle\Service\CacheClearer
+    arguments: ["%kernel.cache_dir%", "@translator", "@filesystem"]
+
+  php_translation.local_file_storage.abstract:
+    class: Translation\SymfonyStorage\FileStorage
+    abstract: true
+    arguments: ["@translation.writer", "@translation.loader_or_reader", ~, []]
+
+  php_translation.storage.xlf_loader:
+    class: Translation\SymfonyStorage\Loader\XliffLoader
+    tags:
+      - { name: translation.loader, alias: xlf, legacy-alias: xliff }
+
+  php_translation.storage.xlf_dumper:
+    class: Translation\SymfonyStorage\Dumper\XliffDumper
+    tags:
+      - { name: translation.dumper, alias: xlf, legacy-alias: xliff }
+    calls:
+      - [setBackup, [false]]
+
+  php_translation.catalogue_counter:
+    public: true
+    class: Translation\Bundle\Catalogue\CatalogueCounter
+    arguments: []
+
+  php_translation.twig_extension:
+    class: Translation\Bundle\Twig\TranslationExtension
+    arguments: ['@translator', "%kernel.debug%"]
+    tags:
+        - { name: twig.extension }
