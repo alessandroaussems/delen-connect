@@ -6,6 +6,7 @@ $code: 'Source Code Pro', monospace;
 
 body{
   margin: 0;
+  overflow-x: hidden;
 }
 a{
   text-decoration: none;
@@ -162,7 +163,29 @@ nav{
         margin-left: 7.5%;
       }
       &.account{
-        margin-left: calc(50% + 4px);
+        margin-left: 52.5%;
+      }
+      &.event{
+        display: flex;
+        width: 20%;
+        margin: 1rem auto;
+        text-align: center;
+        align-content: center;
+        justify-content: center;
+        > span{
+          line-height: 30px;
+          color: #9b9b9b;
+        }
+        &::before{
+          content: '';
+          display: block;
+          width: 30px;
+          height: 30px;
+          background-image: url(/img/calendar.svg);
+          background-size: contain;
+          background-repeat: no-repeat;
+          margin-right: 5%;
+        }
       }
       header{
         display: flex;
@@ -175,17 +198,22 @@ nav{
           margin-left: 2.5%;
           width: 75%;
           small{
-
+            color: #cccccc;
           }
           p{
+            color: #28648a;
+            font-size: 20px;
             margin: 0 auto;
           }
         }
       }
+      main{
+        color: #4a4a4a;
+      }
     }
   }
   aside{
-    width: calc(50% - 2px);
+    width: calc(50% - 5px);
     float: left;
     background-color: #f5f5f5;
     &:last-child{

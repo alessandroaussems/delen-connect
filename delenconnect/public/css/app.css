@@ -1,5 +1,6 @@
 body {
   margin: 0;
+  overflow-x: hidden;
 }
 
 a {
@@ -173,7 +174,32 @@ nav a {
 }
 
 .container-timeline ul li.account {
-  margin-left: calc(50% + 4px);
+  margin-left: 52.5%;
+}
+
+.container-timeline ul li.event {
+  display: flex;
+  width: 20%;
+  margin: 1rem auto;
+  text-align: center;
+  align-content: center;
+  justify-content: center;
+}
+
+.container-timeline ul li.event > span {
+  line-height: 30px;
+  color: #9b9b9b;
+}
+
+.container-timeline ul li.event::before {
+  content: "";
+  display: block;
+  width: 30px;
+  height: 30px;
+  background-image: url(/img/calendar.svg);
+  background-size: contain;
+  background-repeat: no-repeat;
+  margin-right: 5%;
 }
 
 .container-timeline ul li header {
@@ -191,12 +217,22 @@ nav a {
   width: 75%;
 }
 
+.container-timeline ul li header section small {
+  color: #cccccc;
+}
+
 .container-timeline ul li header section p {
+  color: #28648a;
+  font-size: 20px;
   margin: 0 auto;
 }
 
+.container-timeline ul li main {
+  color: #4a4a4a;
+}
+
 .container-timeline aside {
-  width: calc(50% - 2px);
+  width: calc(50% - 5px);
   float: left;
   background-color: #f5f5f5;
   height: 800px;
