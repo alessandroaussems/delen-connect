@@ -8,6 +8,7 @@
     <script src="{{ asset('js/app.js') }}" defer></script>
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css?family=Source+Code+Pro|Source+Sans+Pro" rel="stylesheet">
+    <link rel="shortcut icon" type="image/png" href="../img/apple-touch-icon.png"/>
 
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
@@ -15,30 +16,17 @@
 <body>
     <div id="app">
         <nav>
-            <a href="{{ url('/') }}">
-            </a>
+            <img src="../img/logo_delen.svg" alt="Logo">
             @guest
             @else
-            <ul>
+            <a href="{{ route('logout') }}"
+               onclick="event.preventDefault();
+                 document.getElementById('logout-form').submit();">
+            </a>
 
-                    <li>
-                        <a href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
-                            {{ Auth::user()->name }} <span class="caret"></span>
-                        </a>
-
-                        <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-                            <a class="dropdown-item" href="{{ route('logout') }}"
-                               onclick="event.preventDefault();
-                                                     document.getElementById('logout-form').submit();">
-                                {{ __('Logout') }}
-                            </a>
-
-                            <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
-                                @csrf
-                            </form>
-                        </div>
-                    </li>
-            </ul>
+            <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                @csrf
+            </form>
             @endguest
         </nav>
         <main>
