@@ -7,6 +7,7 @@ security:
                 users:
                     robbert: { password: XSJZ99982, roles: [ 'ROLE_ADMIN', 'ROLE_SUPER_ADMIN' ] }
                     alessandro: { password: XSJZ99982, roles: [ 'ROLE_ADMIN', 'ROLE_SUPER_ADMIN' ] }
+                    koen: { password: XYZ123, roles: [ 'ROLE_ADMIN' ] }
     firewalls:
         dev:
             pattern: ^/(_(profiler|wdt)|css|images|js)/
@@ -16,8 +17,8 @@ security:
             form_login:
                 login_path: login
                 check_path: login
-#                //default_target_path: sonata_admin_dashboard
                 failure_path: 'login'
+                #default_target_path: sonata_admin_dashboard
                 default_target_path: 'client_timeline'
             logout:
                 path: logout

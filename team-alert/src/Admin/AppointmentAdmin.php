@@ -8,11 +8,17 @@ use Sonata\AdminBundle\Admin\AbstractAdmin;
 use Sonata\AdminBundle\Datagrid\DatagridMapper;
 use Sonata\AdminBundle\Datagrid\ListMapper;
 use Sonata\AdminBundle\Form\FormMapper;
+use Sonata\AdminBundle\Route\RouteCollection;
 use Sonata\AdminBundle\Show\ShowMapper;
 use Sonata\CoreBundle\Form\Type\CollectionType;
 
 class AppointmentAdmin extends AbstractAdmin
 {
+    public function configureRoutes(RouteCollection $collection)
+    {
+        $collection->remove('delete');
+    }
+
     protected $parentAssociationMapping = 'customer';
 
     public function prePersist($object)
@@ -57,7 +63,6 @@ class AppointmentAdmin extends AbstractAdmin
                 'actions' => array(
                     'show' => array(),
                     'edit' => array(),
-                    'delete' => array(),
                 )
             ));
     }
@@ -71,8 +76,8 @@ class AppointmentAdmin extends AbstractAdmin
                 $formMapper
                     ->add('customer');
             }
-            $formMapper
-                ->add('date');
+        $formMapper
+            ->add('date');
         if (!$this->hasParentFieldDescription()) {
           $formMapper
               ->add('customer');

@@ -9,6 +9,7 @@ use Sonata\AdminBundle\Datagrid\DatagridMapper;
 use Sonata\AdminBundle\Datagrid\ListMapper;
 use Sonata\AdminBundle\Form\FormMapper;
 use Sonata\AdminBundle\Show\ShowMapper;
+use Symfony\Component\Form\Extension\Core\Type\IntegerType;
 
 class AccountManagerAdmin extends AbstractAdmin
 {
@@ -67,7 +68,10 @@ class AccountManagerAdmin extends AbstractAdmin
     {
         $formMapper
             ->add('name')
-            ->add("customer");
+            ->add("customer")
+            ->add("satisfactionscores", null,  array(
+                'disabled'  => true,
+        ));
     }
 
     /**

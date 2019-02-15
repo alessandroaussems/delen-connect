@@ -17,6 +17,11 @@ class AccountManager
     private $customer;
 
     /**
+     * @ORM\OneToMany(targetEntity="App\Entity\Satisfaction", mappedBy="accountmanager", cascade={"all"}, orphanRemoval=true)
+     */
+    private $satisfactionscores;
+
+    /**
      * @var string
      *
      * @ORM\Column(name="name", type="string", length=255, nullable=true)
@@ -33,6 +38,7 @@ class AccountManager
     public function __construct()
     {
         $this->customer = new ArrayCollection();
+        $this->satisfactionscores = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -82,6 +88,37 @@ class AccountManager
             // set the owning side to null (unless already changed)
             if ($customer->getAccountmanager() === $this) {
                 $customer->setAccountmanager(null);
+            }
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|Satisfaction[]
+     */
+    public function getSatisfactionscores(): Collection
+    {
+        return $this->satisfactionscores;
+    }
+
+    public function addSatisfactionscore(Satisfaction $satisfactionscore): self
+    {
+        if (!$this->satisfactionscores->contains($satisfactionscore)) {
+            $this->satisfactionscores[] = $satisfactionscore;
+            $satisfactionscore->setAccountmanager($this);
+        }
+
+        return $this;
+    }
+
+    public function removeSatisfactionscore(Satisfaction $satisfactionscore): self
+    {
+        if ($this->satisfactionscores->contains($satisfactionscore)) {
+            $this->satisfactionscores->removeElement($satisfactionscore);
+            // set the owning side to null (unless already changed)
+            if ($satisfactionscore->getAccountmanager() === $this) {
+                $satisfactionscore->setAccountmanager(null);
             }
         }
 

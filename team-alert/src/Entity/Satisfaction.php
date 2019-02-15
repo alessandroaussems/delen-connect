@@ -10,6 +10,12 @@ use Doctrine\ORM\Mapping as ORM;
 class Satisfaction
 {
     /**
+     * @ORM\ManyToOne(targetEntity="App\Entity\AccountManager", inversedBy="satisfactionscores", cascade={"merge","persist","refresh","detach"})
+     * @ORM\JoinTable(name="accountmanager_satisfactionscores")
+     */
+    private $accountmanager;
+
+    /**
      * @ORM\Id()
      * @ORM\GeneratedValue()
      * @ORM\Column(type="integer")
@@ -60,6 +66,18 @@ class Satisfaction
     public function setReason(?string $reason): self
     {
         $this->reason = $reason;
+
+        return $this;
+    }
+
+    public function getAccountmanager(): ?AccountManager
+    {
+        return $this->accountmanager;
+    }
+
+    public function setAccountmanager(?AccountManager $accountmanager): self
+    {
+        $this->accountmanager = $accountmanager;
 
         return $this;
     }
