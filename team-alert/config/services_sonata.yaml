@@ -26,3 +26,10 @@ services:
         tags:
             - { name: sonata.admin, manager_type: orm, group: 'Klanten', label: 'Gebeurtenissen', icon: '<i class="fa fa-user"></i>', show_in_dashboard: true }
         public: true
+
+    app.admin.satisfaction:
+        class: App\Admin\SatisfactionAdmin
+        arguments: [~, App\Entity\Satisfaction,  SonataAdminBundle:CRUD]
+        tags:
+            - { name: sonata.admin, manager_type: orm, group: 'Klanten', label: 'Tevredenheid', icon: '<i class="fa fa-user"></i>', show_in_dashboard: true }
+        public: true

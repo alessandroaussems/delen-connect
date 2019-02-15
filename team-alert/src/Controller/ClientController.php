@@ -24,7 +24,8 @@ class ClientController extends BaseController
         $manager = $this->getUser();
 
         $customers = $this->container->get('doctrine')->getManager()->getRepository('App:Customer')->findBy(
-            array());
+            array()
+        );
 //            array(
 //                'account_manager' => $manager
 //            )
