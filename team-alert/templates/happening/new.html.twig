@@ -1,0 +1,11 @@
+<!DOCTYPE html>
+
+<title>New Happening</title>
+
+{% block body %}
+    <h1>Create new Happening</h1>
+
+    {{ include('happening/_form.html.twig') }}
+
+    <a href="{{ path('happening_index') }}">back to list</a>
+{% endblock %}

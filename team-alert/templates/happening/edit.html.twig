@@ -1,0 +1,13 @@
+<!DOCTYPE html>
+
+<title>Edit Happening</title>
+
+{% block body %}
+    <h1>Edit Happening</h1>
+
+    {{ include('happening/_form.html.twig', {'button_label': 'Update'}) }}
+
+    <a href="{{ path('happening_index') }}">back to list</a>
+
+    {{ include('happening/_delete_form.html.twig') }}
+{% endblock %}
