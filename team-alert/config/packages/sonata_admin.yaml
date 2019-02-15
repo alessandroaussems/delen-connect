@@ -12,9 +12,8 @@ sonata_admin:
     dashboard:
         blocks:
         - { type: sonata.admin.block.admin_list, position: left }
-    title_logo: 'img/logo_delen.svg'
+    title_logo: 'img/delen.png'
     templates:
-#        dashboard:''
     show_mosaic_button: false
 
 sonata_block:

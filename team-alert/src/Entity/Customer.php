@@ -2,12 +2,14 @@
 
 namespace App\Entity;
 
+use DateTime;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
  * @ORM\Entity(repositoryClass="App\Repository\CustomerRepository")
+ * @ORM\HasLifecycleCallbacks
  */
 class Customer
 {
@@ -20,6 +22,20 @@ class Customer
      * @ORM\OneToMany(targetEntity="App\Entity\Happening", mappedBy="customer", cascade={"all"}, orphanRemoval=true)
      */
     private $happening;
+
+    /**
+     * @var DateTime $created
+     *
+     * @ORM\Column(type="datetime")
+     */
+    protected $created;
+
+    /**
+     * @var DateTime $updated
+     *
+     * @ORM\Column(type="datetime", nullable = true)
+     */
+    protected $updated;
 
     /**
      * @ORM\Id()
@@ -98,6 +114,7 @@ class Customer
     {
         $this->appointment = new ArrayCollection();
         $this->happening = new ArrayCollection();
+        $this->created = new \DateTime("now");
     }
 
     public function __toString()
@@ -288,6 +305,30 @@ class Customer
                 $happening->setCustomer(null);
             }
         }
+
+        return $this;
+    }
+
+    public function getCreated(): ?\DateTimeInterface
+    {
+        return $this->created;
+    }
+
+    public function setCreated(\DateTimeInterface $created): self
+    {
+        $this->created = $created;
+
+        return $this;
+    }
+
+    public function getUpdated(): ?\DateTimeInterface
+    {
+        return $this->updated;
+    }
+
+    public function setUpdated(?\DateTimeInterface $updated): self
+    {
+        $this->updated = $updated;
 
         return $this;
     }

@@ -2,12 +2,14 @@
 
 namespace App\Entity;
 
+use DateTime;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
  * @ORM\Entity(repositoryClass="App\Repository\AppointmentRepository")
+ * @ORM\HasLifecycleCallbacks
  */
 class Appointment
 {
@@ -21,6 +23,20 @@ class Appointment
      * @ORM\OneToMany(targetEntity="App\Entity\Chattext", mappedBy="appointment", cascade={"all"}, orphanRemoval=true)
      */
     private $chattext;
+
+    /**
+     * @var DateTime $created
+     *
+     * @ORM\Column(type="datetime")
+     */
+    protected $created;
+
+    /**
+     * @var DateTime $updated
+     *
+     * @ORM\Column(type="datetime", nullable = true)
+     */
+    protected $updated;
 
     /**
      * @ORM\Id()
@@ -100,6 +116,30 @@ class Appointment
                 $chattext->setAppointment(null);
             }
         }
+
+        return $this;
+    }
+
+    public function getCreated(): ?\DateTimeInterface
+    {
+        return $this->created;
+    }
+
+    public function setCreated(\DateTimeInterface $created): self
+    {
+        $this->created = $created;
+
+        return $this;
+    }
+
+    public function getUpdated(): ?\DateTimeInterface
+    {
+        return $this->updated;
+    }
+
+    public function setUpdated(?\DateTimeInterface $updated): self
+    {
+        $this->updated = $updated;
 
         return $this;
     }
