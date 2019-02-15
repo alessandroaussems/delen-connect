@@ -18,7 +18,7 @@ security:
                 check_path: login
 #                //default_target_path: sonata_admin_dashboard
                 failure_path: 'login'
-                default_target_path: 'my-timeline'
+                default_target_path: 'client_timeline'
             logout:
                 path: logout
             logout_on_user_change: true

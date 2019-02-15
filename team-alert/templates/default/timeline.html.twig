@@ -4,81 +4,100 @@
     {% for x in customer.appointment|default() %}
         {{ x.date|date('d-m-y') }}
     {% endfor %}
-    <div class="container-timeline clearfix">
-    <ul>
-        <li class="event birth">
-            <span>Geboorte: ma 10 dec. 2019</span>
-        </li>
-        <li class="event marriage">
-            <span>Huwelijk: ma 10 dec. 2019</span>
-        </li>
-        <li class="event new">
-            <span>Eerste contact: ma 10 dec. 2019</span>
-        </li>
-        <li class="client">
-            <header>
-                <img src="{{ asset('img/person.png') }}" alt="">
-                <section>
-                    <small>ma 10 dec. 2019</small>
-                    <p>
-                        Erik Delen
-                    </p>
-                </section>
-            </header>
+    {% if customer|default() or accountmanager|default() %}
+        <div class="container-timeline clearfix">
+        <ul>
+            <li class="event birth">
+                <span>Geboorte: ma 10 dec. 2019</span>
+            </li>
+            <li class="event marriage">
+                <span>Huwelijk: ma 10 dec. 2019</span>
+            </li>
+            <li class="event new">
+                <span>Eerste contact: ma 10 dec. 2019</span>
+            </li>
+            <li class="client">
+                <header>
+                    <img src="{{ asset('img/person.png') }}" alt="">
+                    <section>
+                        <small>ma 10 dec. 2019</small>
+                        <p>
+                            Erik Delen
+                        </p>
+                    </section>
+                </header>
+                <main>
+                    <div class="filler">
+                        <p>Tevredenheid: ma 10dec. 2019</p>
+                        <span class="fill"></span>
+                    </div>
+                </main>
+            </li>
+            <li class="client">
+                <header>
+                    <img src="{{ asset('img/person.png') }}" alt="">
+                    <section>
+                        <small>ma 10 dec. 2019</small>
+                        <p>
+                            Erik Delen
+                        </p>
+                    </section>
+                </header>
+                <main>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Atque dolorem est magnam perferendis placeat recusandae similique. Amet architecto, consequatur, earum enim eos fuga impedit maiores nemo, possimus quia quod temporibus.</p>
+                </main>
+            </li>
+            <li class="event appointment">
+                <span>Afspraak: ma 10 dec. 2019</span>
+            </li>
+            <li class="account">
+                <header>
+                    <img src="{{ asset('img/person.png') }}" alt="">
+                    <section>
+                        <small>ma 10 dec. 2019</small>
+                        <p>Erik Delen</p>
+                    </section>
+                </header>
+                <main>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Atque dolorem est magnam perferendis placeat recusandae similique. Amet architecto, consequatur, earum enim eos fuga impedit maiores nemo, possimus quia quod temporibus.</p>
+                </main>
+            </li>
+        </ul>
+        <aside>
+            <!-- IF CLIENT -->
+            {#{% if customer|default() %}#}
+                {#{% include 'partials/client_add_remark.html.twig' %}#}
+                {#{% if 'afspraak' in app.request.uri %}#}
+                    {% include 'partials/client_happiness.html.twig' %}
+                {#{% endif %}#}
+            {#{% endif %}#}
+        </aside>
+        <aside>
+            <!-- IF ACCOUNT -->
+            {% if accountmanager|default() %}
+                {% include 'partials/account_add_remark.html.twig' %}
+            {% endif %}
+            {% include 'partials/account_add_event.html.twig' %}
+        </aside>
+        {% else %}
             <main>
-                <div class="filler">
-                    <p>Tevredenheid: ma 10dec. 2019</p>
-                    <span class="fill"></span>
+                <div class="container-login">
+                    <img src="{{ asset('img/logo_delen.svg') }}" alt="Logo">
+                    <form method="POST" action="{{ path('login') }}">
+                        <label for="_username">Gebruikersnaam</label>
+                        <input id="_username" class="form-control" name="_username" value="" required autofocus>
+                        </span>
+                        <img src="{{ asset('img/digicode.png') }}" alt="Digicode">
+                        <input id="password" type="password" class="form-control" name="_password" required placeholder="* * * *"><br>
+                        <button type="submit" class="btn btn-primary">
+                            Aanmelden
+                        </button>
+                    </form>
                 </div>
             </main>
-        </li>
-        <li class="client">
-            <header>
-                <img src="{{ asset('img/person.png') }}" alt="">
-                <section>
-                    <small>ma 10 dec. 2019</small>
-                    <p>
-                        Erik Delen
-                    </p>
-                </section>
-            </header>
-            <main>
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Atque dolorem est magnam perferendis placeat recusandae similique. Amet architecto, consequatur, earum enim eos fuga impedit maiores nemo, possimus quia quod temporibus.</p>
-            </main>
-        </li>
-        <li class="event appointment">
-            <span>Afspraak: ma 10 dec. 2019</span>
-        </li>
-        <li class="account">
-            <header>
-                <img src="{{ asset('img/person.png') }}" alt="">
-                <section>
-                    <small>ma 10 dec. 2019</small>
-                    <p>Erik Delen</p>
-                </section>
-            </header>
-            <main>
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Atque dolorem est magnam perferendis placeat recusandae similique. Amet architecto, consequatur, earum enim eos fuga impedit maiores nemo, possimus quia quod temporibus.</p>
-            </main>
-        </li>
-    </ul>
-    <aside>
-        <!-- IF CLIENT -->
-        {#{% if customer|default() %}#}
-            {#{% include 'partials/client_add_remark.html.twig' %}#}
-            {#{% if 'afspraak' in app.request.uri %}#}
-                {% include 'partials/client_happiness.html.twig' %}
-            {#{% endif %}#}
-        {#{% endif %}#}
-    </aside>
-    <aside>
-        <!-- IF ACCOUNT -->
-        {% if accountmanager|default() %}
-            {% include 'partials/account_add_remark.html.twig' %}
-        {% endif %}
-        {% include 'partials/account_add_event.html.twig' %}
-    </aside>
-</div>
+    {% endif %}
+
+    </div>
 {% endblock %}
 {% block javascripts %}
     {{ parent() }}

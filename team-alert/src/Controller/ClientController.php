@@ -8,7 +8,7 @@ class ClientController extends BaseController
 {
     public function index(Request $request, $name = null, $id = null)
     {
-        $username = '';
+        $customer = '';
         if ($this->getUser()) {
             $username = $this->getUser();
             $customer = $this->container->get('doctrine')->getManager()->getRepository('App:Customer')->findOneBy(
@@ -16,10 +16,7 @@ class ClientController extends BaseController
             );
         }
 
-        return $this->render('default/timeline.html.twig', array(
-            'customer' => $customer
-            )
-        );
+        return $this->render('default/timeline.html.twig', array('customer' => $customer));
     }
 
     public function overview()
