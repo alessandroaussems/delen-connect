@@ -6,7 +6,6 @@
         <ul>
             {% for happening in customer.happening|default() %}
                 {#{{ happening.occurenceName|default() }}#}
-                {#{{ dump(happening.occurenceType) }}#}
                 {% if happening.occurenceType == 'eerste contact' %}
                     <li class="event new" style="background-image:{{ asset(happening.occurenceSymbol|default('img/lamp.svg')) }}">
                         <span>

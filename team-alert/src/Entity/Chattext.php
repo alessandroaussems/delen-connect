@@ -4,9 +4,7 @@ namespace App\Entity;
 
 use DateTime;
 use Doctrine\ORM\Mapping as ORM;
-use function get_current_user;
 use Symfony\Component\Security\Core\User\User;
-use Symfony\Component\Security\Core\User\UserChecker;
 
 /**
  * @ORM\Entity(repositoryClass="App\Repository\ChattextRepository")
