@@ -64,12 +64,12 @@ class SatisfactionAdmin extends AbstractAdmin
      */
     protected function configureFormFields(FormMapper $formMapper)
     {
+        $formMapper
+            ->add('score');
 //        if (!$this->hasParentFieldDescription()) {
 //            $formMapper
 //                ->add('customer');
 //        }
-        $formMapper
-            ->add('score');
 //        if (!$this->hasParentFieldDescription()) {
 ////            $formMapper
 ////                ->add('customer');

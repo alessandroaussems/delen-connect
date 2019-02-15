@@ -1,5 +1,12 @@
 services:
-    app.admin.blocks:
+    app.admin.accountmanager:
+        class: App\Admin\AccountManagerAdmin
+        arguments: [~, App\Entity\AccountManager,  SonataAdminBundle:CRUD]
+        tags:
+            - { name: sonata.admin, manager_type: orm, group: 'Managers', label: 'Account Manager', icon: '<i class="fa fa-user"></i>', show_in_dashboard: true }
+        public: true
+
+    app.admin.customer:
         class: App\Admin\CustomerAdmin
         arguments: [~, App\Entity\Customer,  SonataAdminBundle:CRUD]
         tags:
@@ -33,3 +40,4 @@ services:
         tags:
             - { name: sonata.admin, manager_type: orm, group: 'Klanten', label: 'Tevredenheid', icon: '<i class="fa fa-user"></i>', show_in_dashboard: true }
         public: true
+

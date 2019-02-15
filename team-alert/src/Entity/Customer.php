@@ -24,6 +24,13 @@ class Customer
     private $happening;
 
     /**
+     * @ORM\ManyToOne(targetEntity="App\Entity\AccountManager", inversedBy="customer", cascade={"merge","persist","refresh","detach"})
+     * @ORM\JoinTable(name="accountmanager_customer")
+     */
+    private $accountmanager;
+
+
+    /**
      * @var DateTime $created
      *
      * @ORM\Column(type="datetime")
@@ -329,6 +336,18 @@ class Customer
     public function setUpdated(?\DateTimeInterface $updated): self
     {
         $this->updated = $updated;
+
+        return $this;
+    }
+
+    public function getAccountmanager(): ?AccountManager
+    {
+        return $this->accountmanager;
+    }
+
+    public function setAccountmanager(?AccountManager $accountmanager): self
+    {
+        $this->accountmanager = $accountmanager;
 
         return $this;
     }
