@@ -29,7 +29,6 @@ class Customer
      */
     private $accountmanager;
 
-
     /**
      * @var DateTime $created
      *

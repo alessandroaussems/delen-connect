@@ -63,6 +63,11 @@ class Happening
         return $this->getOccurenceName() ?: 'New';
     }
 
+    public function __construct()
+    {
+        $this->created = new \DateTime("now");
+    }
+
     public function getId(): ?int
     {
         return $this->id;

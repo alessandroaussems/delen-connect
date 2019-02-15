@@ -58,6 +58,7 @@ class Appointment
     public function __construct()
     {
         $this->chattext = new ArrayCollection();
+        $this->created = new \DateTime("now");
     }
 
     public function getId(): ?int

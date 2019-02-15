@@ -82,8 +82,9 @@ class Chattext
 
     public function __construct()
     {
-         /** @var User $user */
-        return $this->setCreatedBy($user->getUsername());
+        /** @var User $user */
+        $this->setCreatedBy($user->getUsername());
+        $this->created = new \DateTime("now");
     }
 
     public function getId(): ?int

@@ -24,11 +24,11 @@ class ClientController extends BaseController
         $manager = $this->getUser();
 
         $customers = $this->container->get('doctrine')->getManager()->getRepository('App:Customer')->findBy(
-            array()
+            array(
+                'account_manager' => $manager
+            )
         );
-//            array(
-//                'account_manager' => $manager
-//            )
+
         return $this->render('default/client_overview.html.twig', array('customers' => $customers)
         );
     }
