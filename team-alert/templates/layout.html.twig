@@ -61,12 +61,14 @@
             $("ul").append('<li class="client"> <header> <img src="/img/person.png" alt=""> <section> <small>vrij 15 feb. 2018</small> <p>Alessandro Aussems</p> </section> </header> <main> <p>'+document.getElementById("remarks").value+'</p> </main> </li>');
             document.getElementById("remarks").value="";
             $('html,body').animate({scrollTop: document.body.scrollHeight},"fast");
+            //THIS IS WHERE WE CALL THE BACKEND API
         }
         function addSatisfaction(){
             event.preventDefault();
             document.getElementById("satisfactionform").classList.add("hide");
             $("ul").append('<li class="client"> <header> <img src="/img/person.png" alt=""> <section> <small>vrij 15 feb. 2018</small> <p>Alessandro Aussems</p> </section> </header> <main> <div class="filler"><p>Tevredenheid: 60%</p><span class="fill" style="width: 60%"></span></div></main> </li>');
             $('html,body').animate({scrollTop: document.body.scrollHeight},"fast");
+            //THIS IS WHERE WE CALL THE BACKEND API
         }
         $('html,body').animate({scrollTop: document.body.scrollHeight},"fast");
     </script>
