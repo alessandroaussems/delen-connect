@@ -1,22 +1,47 @@
 {% extends 'layout.html.twig' %}
 {% block content %}
-    {{ customer }}
-    {% for x in customer.appointment|default() %}
-        {{ x.date|date('d-m-y') }}
-        {{ dump(x) }}
+
+    {% for appointment in customer.appointment|default() %}
+        {{ appointment.date|date('d-m-y')|default() }}
+        {% for conversation in appointment.chattext|default() %}
+            {{ conversation.text|default() }}
+            <br>
+        {% endfor %}
     {% endfor %}
+
     {% if customer|default() or accountmanager|default() %}
         <div class="container-timeline clearfix">
         <ul>
-            <li class="event birth">
-                <span>Geboorte: ma 10 dec. 2019</span>
-            </li>
-            <li class="event marriage">
-                <span>Huwelijk: ma 10 dec. 2019</span>
-            </li>
-            <li class="event new">
-                <span>Eerste contact: ma 10 dec. 2019</span>
-            </li>
+            {% for happening in customer.happening|default() %}
+                {#{{ happening.occurenceName|default() }}#}
+                {#{{ dump(happening.occurenceType) }}#}
+                {% if happening.occurenceType == 'eerste contact' %}
+                    <li class="event new" style="background-image:{{ asset(happening.occurenceSymbol|default('img/lamp.svg')) }}">
+                        <span>
+                            Eerste contact:
+                            {{ happening.occurenceDate|date('d-m-y')|default() }}
+                        </span>
+                    </li>
+                {% endif %}
+                {% if happening.occurenceType == 'geboorte' %}
+                    <li class="event birth" style="background-image:{{ asset(happening.occurenceSymbol|default('img/birth.svg')) }}">
+                        <span>
+                            Geboorte:
+                            {{ happening.occurenceDate|date('d-m-y')|default() }}
+                        </span>
+                    </li>
+                {% endif %}
+                {% if happening.occurenceType == 'huwelijk' %}
+                    <li class="event marriage" style="background-image:{{ asset(happening.occurenceSymbol|default('img/ring.svg')) }}">
+                        <span>
+                            Huwelijk:
+                            {{ happening.occurenceDate|date('d-m-y')|default() }}
+                        </span>
+                    </li>
+                {% endif %}
+                {#{{ happening.occurenceDate|date('d-m-y')|default() }}#}
+                {#{{ happening.occurenceSymbol|default() }}#}
+            {% endfor %}
             <li class="client">
                 <header>
                     <img src="{{ asset('img/person.png') }}" alt="">

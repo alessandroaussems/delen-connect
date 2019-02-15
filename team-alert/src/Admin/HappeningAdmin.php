@@ -2,11 +2,12 @@
 
 namespace App\Admin;
 
-use FOS\CKEditorBundle\Form\Type\CKEditorType;
+use FM\ElfinderBundle\Form\Type\ElFinderType;
 use Sonata\AdminBundle\Admin\AbstractAdmin;
 use Sonata\AdminBundle\Datagrid\DatagridMapper;
 use Sonata\AdminBundle\Datagrid\ListMapper;
 use Sonata\AdminBundle\Form\FormMapper;
+use Sonata\AdminBundle\Form\Type\ChoiceFieldMaskType;
 use Sonata\AdminBundle\Show\ShowMapper;
 
 class HappeningAdmin extends AbstractAdmin
@@ -20,6 +21,7 @@ class HappeningAdmin extends AbstractAdmin
     {
         parent::configureDatagridFilters($datagridMapper);
         $datagridMapper
+            ->add('customer')
             ->add('id')
             ->add('occurenceName')
             ->add('occurenceDate')
@@ -33,9 +35,11 @@ class HappeningAdmin extends AbstractAdmin
     {
         parent::configureListFields($listMapper);
         $listMapper
+            ->add('customer')
             ->add('occurenceName')
             ->add('occurenceDate')
             ->add('occurenceSymbol')
+            ->add('occurenceType')
             ->add('_action', 'actions', array(
                 'actions' => array(
                     'show' => array(),
@@ -57,12 +61,27 @@ class HappeningAdmin extends AbstractAdmin
         $formMapper
             ->add('occurenceName')
             ->add('occurenceDate')
-            ->add('occurenceSymbol', CKEditorType::class, array(
+            ->add('occurenceSymbol', ElFinderType::class, array(
                 'required' => false
-
-            ),
-                array(
-                ))
+            ))
+            ->add('occurenceSymbol', ElFinderType::class, array(
+                "instance" => "default",
+                "attr" => array("class" => "form-control", "placeholder" => "Klik hier om een afbeelding toe te voegen"),
+                "required" => false,
+                'label' => 'Gebeurtenis afbeelding'
+            ))
+            ->add('occurenceType', ChoiceFieldMaskType::class, array(
+                'choices' => array(
+                    'selecteer een type' => '',
+                    'eerste contact' => 'eerste contact',
+                    'geboorte' => 'geboorte',
+                    'huwelijk' => 'huwelijk',
+                    'verjaardag' => 'verjaardag',
+                    'ziekte' => 'ziekte',
+                    'overlijden' => 'overlijden',
+                    'andere' => 'andere'
+                )
+            ))
         ;
     }
 

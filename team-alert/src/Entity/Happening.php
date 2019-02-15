@@ -37,6 +37,11 @@ class Happening
      */
     private $occurenceSymbol;
 
+    /**
+     * @ORM\Column(name="occurence_type", type="string", nullable=true)
+     */
+    private $occurenceType;
+
     public function __toString()
     {
         return $this->getOccurenceName() ?: 'New';
@@ -91,6 +96,18 @@ class Happening
     public function setCustomer(?Customer $customer): self
     {
         $this->customer = $customer;
+
+        return $this;
+    }
+
+    public function getOccurenceType(): ?string
+    {
+        return $this->occurenceType;
+    }
+
+    public function setOccurenceType(?string $occurenceType): self
+    {
+        $this->occurenceType = $occurenceType;
 
         return $this;
     }
