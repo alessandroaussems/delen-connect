@@ -43,6 +43,7 @@
     "symfony/css-selector": "^3.4",
     "symfony/phpunit-bridge": "^3.4",
     "symfony/profiler-pack": "*",
+    "symfony/var-dumper": "^4.2",
     "symfony/web-server-bundle": "^3.4"
   },
   "config": {

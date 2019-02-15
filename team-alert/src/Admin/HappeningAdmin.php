@@ -2,6 +2,7 @@
 
 namespace App\Admin;
 
+use FOS\CKEditorBundle\Form\Type\CKEditorType;
 use Sonata\AdminBundle\Admin\AbstractAdmin;
 use Sonata\AdminBundle\Datagrid\DatagridMapper;
 use Sonata\AdminBundle\Datagrid\ListMapper;
@@ -56,7 +57,12 @@ class HappeningAdmin extends AbstractAdmin
         $formMapper
             ->add('occurenceName')
             ->add('occurenceDate')
-            ->add('occurenceSymbol')
+            ->add('occurenceSymbol', CKEditorType::class, array(
+                'required' => false
+
+            ),
+                array(
+                ))
         ;
     }
 

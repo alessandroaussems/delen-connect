@@ -41,6 +41,7 @@ class AppointmentAdmin extends AbstractAdmin
     protected function configureDatagridFilters(DatagridMapper $datagridMapper)
     {
         $datagridMapper
+            ->add('customer')
             ->add('date');
     }
 
@@ -51,6 +52,7 @@ class AppointmentAdmin extends AbstractAdmin
     {
         $listMapper
             ->add('customer')
+            ->add('date')
             ->add('_action', 'actions', array(
                 'actions' => array(
                     'show' => array(),
