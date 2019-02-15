@@ -230,6 +230,8 @@ nav {
       .container-timeline ul li.account {
         margin-left: 52.5%;
         background-color: #28648a; }
+        .container-timeline ul li.account img {
+          border-radius: 100%; }
         .container-timeline ul li.account p {
           color: #ffffff; }
       .container-timeline ul li.event {
