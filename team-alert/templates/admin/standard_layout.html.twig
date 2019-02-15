@@ -18,6 +18,7 @@
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta charset="UTF-8">
         <meta content='width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no' name='viewport'>
+        <link rel="shortcut icon" type="image/png" href="/img/apple-touch-icon.png"/>
     {% endblock %}
 
     <meta data-sonata-admin='{{ {
@@ -178,16 +179,9 @@
                             </div>
                         {% endblock sonata_breadcrumb %}
                     </div>
-
-                    {% block sonata_top_nav_menu %}
-                        {% if app.user and is_granted(sonata_admin.adminPool.getOption('role_admin')) %}
-                            <div class="navbar-custom-menu">
-                                <ul class="nav navbar-nav">
-                                    <a href="{{ path('logout') }}">logout</a>
-                                </ul>
-                            </div>
-                        {% endif %}
-                    {% endblock %}
+                    <div class="" style="float:right; margin-right:20px; margin-top:15px;">
+                        <a href="{{ path('logout') }}">logout</a>
+                    </div>
                 </nav>
             {% endblock sonata_nav %}
         </header>
