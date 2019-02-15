@@ -8,11 +8,17 @@ class ClientController extends BaseController
 {
     public function index(Request $request)
     {
-        $customers = $this->container->get('doctrine')->getManager()->getRepository('App:Customer')->findBy(
-            array()
-        );
+        $username = '';
+        if ($this->getUser()) {
+            $username = $this->getUser();
+            $customer = $this->container->get('doctrine')->getManager()->getRepository('App:Customer')->findOneBy(
+                array('name' => $username)
+            );
+        }
 
-        return $this->render('default/timeline.html.twig', array('customers' => $customers)
+        return $this->render('default/timeline.html.twig', array(
+            'customer' => $customer
+            )
         );
     }
 

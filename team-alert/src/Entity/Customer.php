@@ -38,12 +38,12 @@ class Customer
     private $lastName;
 
     /**
-     * @ORM\Column(name="year_of_birth", type="datetime", nullable=true)
+     * @ORM\Column(name="year_of_birth", type="date", nullable=true)
      */
     private $yearOfBirth;
 
     /**
-     * @ORM\Column(name="year_of_death", type="datetime", nullable=true)
+     * @ORM\Column(name="year_of_death", type="date", nullable=true)
      */
     private $yearOfDeath;
 

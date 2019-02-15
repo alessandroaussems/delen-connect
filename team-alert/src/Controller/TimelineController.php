@@ -2,7 +2,9 @@
 
 namespace App\Controller;
 
+use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\HttpFoundation\Response;
 
 class TimelineController extends BaseController
 {
@@ -14,8 +16,5 @@ class TimelineController extends BaseController
             array()
         );
 
-
-        return $this->render('default/index.html.twig', array()
-        );
     }
 }

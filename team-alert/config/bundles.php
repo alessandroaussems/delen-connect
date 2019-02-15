@@ -24,4 +24,5 @@ return [
     A2lix\TranslationFormBundle\A2lixTranslationFormBundle::class => ['all' => true],
     Translation\Bundle\TranslationBundle::class => ['all' => true],
     Isometriks\Bundle\SpamBundle\IsometriksSpamBundle::class => ['all' => true],
+    FOS\CKEditorBundle\FOSCKEditorBundle::class => ['all' => true],
 ];

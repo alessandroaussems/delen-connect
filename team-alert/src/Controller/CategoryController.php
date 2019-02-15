@@ -8,7 +8,8 @@ class CategoryController extends BaseController
 {
     public function index(Request $request, $category = null)
     {
-        return $this->render('default/index.html.twig', array()
-        );
+        if ($request->getUser()) {
+            $this->redirectToRoute('client_timeline');
+        };
     }
 }

@@ -1,6 +1,10 @@
 {% extends 'layout.html.twig' %}
 {% block content %}
-<div class="container-timeline clearfix">
+    {{ customer }}
+    {% for x in customer.appointment|default() %}
+        {{ x.date|date('d-m-y') }}
+    {% endfor %}
+    <div class="container-timeline clearfix">
     <ul>
         <li class="event birth"><span>Geboorte: ma 10 dec. 2019</span></li>
         <li class="event marriage"><span>Huwelijk: ma 10 dec. 2019</span></li>

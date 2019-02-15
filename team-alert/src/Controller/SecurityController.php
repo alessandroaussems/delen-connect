@@ -9,6 +9,9 @@ class SecurityController extends BaseController
 {
     public function login(Request $request, AuthenticationUtils $authenticationUtils)
     {
+        if ($request->getUser()) {
+            $this->redirectToRoute('client_timeline');
+        }
         $error = $authenticationUtils->getLastAuthenticationError();
         $lastUsername = $authenticationUtils->getLastUsername();
         return $this->render('default/login.html.twig', array(
