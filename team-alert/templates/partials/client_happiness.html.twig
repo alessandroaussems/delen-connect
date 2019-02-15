@@ -1,11 +1,30 @@
-<form method="POST" style="top: 80vh">
+{#<form method="POST" style="top: 80vh">#}
+    {#<label for="myRange">Wat vond u van uw laatste bezoek?</label>#}
+    {#<div class="info">#}
+        {#<span>Niet tevreden</span>#}
+        {#<span>Zéér tevreden</span>#}
+    {#</div>#}
+    {#<div class="slidecontainer">a#}
+        {#<input type="range" min="1" max="100" value="50" class="slider" id="rangeslider" name="range">#}
+    {#</div>#}
+    {#<button>Toevoegen</button>#}
+{#</form>#}
+
+<form method="GET" action="{{ path('appointment_new') }}" style="top: 80vh">
     <label for="myRange">Wat vond u van uw laatste bezoek?</label>
     <div class="info">
         <span>Niet tevreden</span>
         <span>Zéér tevreden</span>
     </div>
-    <div class="slidecontainer">a
-        <input type="range" min="1" max="100" value="50" class="slider" id="rangeslider" name="range">
+    <div class="slidecontainer">
+        {#{{ form_widget(satisfactionform.satisfactionScore, { attr: { 'type':"range", 'min': 1, 'max': 100, 'value':50, 'class': "slider", id: "rangeslider", 'name':"range"}}) }}#}
+        <input type="range" min="1" max="100" value="50" class="slider" id="appointment[satisfactionScore]" name="appointment[satisfactionScore]">
+    </div>
+    <div class="hide">
+        {{ form_widget(satisfactionform.customer) }}
+        {{ form_widget(satisfactionform.created) }}
+        {{ form_widget(satisfactionform.updated) }}
+        {{ form_widget(satisfactionform.date) }}
     </div>
     <button>Toevoegen</button>
 </form>

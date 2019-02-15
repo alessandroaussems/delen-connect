@@ -17,6 +17,7 @@ class AppointmentType extends AbstractType
             ->add('updated',DateTimeType::class)
             ->add('date',DateTimeType::class)
             ->add('customer')
+            ->add('satisfactionScore')
         ;
     }
 

@@ -77,7 +77,8 @@ class AppointmentAdmin extends AbstractAdmin
                     ->add('customer');
             }
         $formMapper
-            ->add('date');
+            ->add('satisfactionScore')
+        ->add('date');
         if (!$this->hasParentFieldDescription()) {
           $formMapper
               ->add('customer');

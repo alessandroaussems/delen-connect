@@ -2,7 +2,9 @@
 
 namespace App\Controller;
 
+use App\Entity\Appointment;
 use App\Entity\Chattext;
+use App\Form\AppointmentType;
 use App\Form\ChattextType;
 use DateTime;
 use Symfony\Component\HttpFoundation\Request;
@@ -23,15 +25,24 @@ class ClientController extends BaseController
         $chattext->setCreated(new \DateTime("now"));
         $form->handleRequest($request);
 
-        if ($request->isMethod('POST') && $form->isSubmitted()) {
+        $appointment = new Appointment();
+        $appointmentform = $this->createForm(AppointmentType::class, $appointment);
+        $appointmentform->handleRequest($request);
+
+        if ($request->isMethod('POST') && ($form->isSubmitted() || $appointmentform->isSubmitted())) {
             $entityManager = $this->getDoctrine()->getManager();
             $entityManager->persist($chattext);
             $entityManager->flush();
+            $entityManager->persist($appointment);
+            $entityManager->flush();
             return $this->redirectToRoute('client_timeline');
         }
+
+
         return $this->render('default/timeline.html.twig', array(
             'customer' => $customer,
-            'form' => $form->createView()
+            'form' => $form->createView(),
+            'satisfactionform' => $appointmentform->createView()
         ));
     }
 

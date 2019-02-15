@@ -32,9 +32,16 @@ class ChattextController extends Controller
     {
         $chattext = new Chattext();
         $form = $this->createForm(ChattextType::class, $chattext);
+        $last_appointment = $this->container->get('doctrine')->getManager()->getRepository('App:Appointment')->findOneBy(
+            array(),
+            array(
+                'id' => 'desc'
+            )
+        );
         $form->handleRequest($request);
 
         if ($form->isSubmitted()) {
+            $chattext->setAppointment($last_appointment);
             $entityManager = $this->getDoctrine()->getManager();
             $entityManager->persist($chattext);
             $entityManager->flush();

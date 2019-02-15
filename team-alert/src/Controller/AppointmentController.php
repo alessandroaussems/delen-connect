@@ -35,6 +35,8 @@ class AppointmentController extends Controller
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
+            $satscore = $request->get('satisfactionScore');
+            $appointment->setSatisfactionScore($satscore);
             $entityManager = $this->getDoctrine()->getManager();
             $entityManager->persist($appointment);
             $entityManager->flush();

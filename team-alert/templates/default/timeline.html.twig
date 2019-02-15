@@ -65,6 +65,8 @@
                         </main>
                     </li>
                 {% endfor %}
+                {{ appointment.satisfactionScore|default() }}
+
             {% endfor %}
 
             {#????#}
