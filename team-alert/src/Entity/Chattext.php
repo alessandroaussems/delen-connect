@@ -5,6 +5,8 @@ namespace App\Entity;
 use DateTime;
 use Doctrine\ORM\Mapping as ORM;
 use function get_current_user;
+use Symfony\Component\Security\Core\User\User;
+use Symfony\Component\Security\Core\User\UserChecker;
 
 /**
  * @ORM\Entity(repositoryClass="App\Repository\ChattextRepository")
@@ -80,7 +82,8 @@ class Chattext
 
     public function __construct()
     {
-        return $this->setCreatedBy(get_current_user());
+         /** @var User $user */
+        return $this->setCreatedBy($user->getUsername());
     }
 
     public function getId(): ?int

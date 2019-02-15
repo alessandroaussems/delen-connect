@@ -2,7 +2,6 @@
 
 namespace App\Entity;
 
-use ClassesWithParents\D;
 use DateTime;
 use Doctrine\ORM\Mapping as ORM;
 

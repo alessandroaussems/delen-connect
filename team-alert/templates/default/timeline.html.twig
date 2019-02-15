@@ -1,14 +1,6 @@
 {% extends 'layout.html.twig' %}
 {% block content %}
 
-    {% for appointment in customer.appointment|default() %}
-        {{ appointment.date|date('d-m-y')|default() }}
-        {% for conversation in appointment.chattext|default() %}
-            {{ conversation.text|default() }}
-            <br>
-        {% endfor %}
-    {% endfor %}
-
     {% if customer|default() or accountmanager|default() %}
         <div class="container-timeline clearfix">
         <ul>
@@ -22,57 +14,54 @@
                             {{ happening.occurenceDate|date('d-m-y')|default() }}
                         </span>
                     </li>
-                {% endif %}
-                {% if happening.occurenceType == 'geboorte' %}
+                {% elseif happening.occurenceType == 'geboorte' %}
                     <li class="event birth" style="background-image:{{ asset(happening.occurenceSymbol|default('img/birth.svg')) }}">
                         <span>
                             Geboorte:
                             {{ happening.occurenceDate|date('d-m-y')|default() }}
                         </span>
                     </li>
-                {% endif %}
-                {% if happening.occurenceType == 'huwelijk' %}
+                {% elseif happening.occurenceType == 'huwelijk' %}
                     <li class="event marriage" style="background-image:{{ asset(happening.occurenceSymbol|default('img/ring.svg')) }}">
                         <span>
                             Huwelijk:
                             {{ happening.occurenceDate|date('d-m-y')|default() }}
                         </span>
                     </li>
+                {% elseif happening.occurenceType == 'afspraak' %}
+                    <li class="event new" style="background-image:{{ asset(happening.occurenceSymbol|default('img/calendar.svg')) }}">
+                        <span>
+                            Afspraak:
+                            {{ happening.occurenceDate|date('d-m-y')|default() }}
+                        </span>
+                    </li>
                 {% endif %}
-                {#{{ happening.occurenceDate|date('d-m-y')|default() }}#}
-                {#{{ happening.occurenceSymbol|default() }}#}
             {% endfor %}
-            <li class="client">
-                <header>
-                    <img src="{{ asset('img/person.png') }}" alt="">
-                    <section>
-                        <small>ma 10 dec. 2019</small>
-                        <p>
-                            Erik Delen
-                        </p>
-                    </section>
-                </header>
-                <main>
-                    <div class="filler">
-                        <p>Tevredenheid: ma 10dec. 2019</p>
-                        <span class="fill"></span>
-                    </div>
-                </main>
-            </li>
-            <li class="client">
-                <header>
-                    <img src="{{ asset('img/person.png') }}" alt="">
-                    <section>
-                        <small>ma 10 dec. 2019</small>
-                        <p>
-                            Erik Delen
-                        </p>
-                    </section>
-                </header>
-                <main>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Atque dolorem est magnam perferendis placeat recusandae similique. Amet architecto, consequatur, earum enim eos fuga impedit maiores nemo, possimus quia quod temporibus.</p>
-                </main>
-            </li>
+
+            {% for appointment in customer.appointment|default() %}
+                {% for conversation in appointment.chattext|default() %}
+                    <li class="client">
+                        <header>
+                            <img src="{{ asset('img/person.png') }}" alt="">
+                            <section>
+                                <small>
+                                    {{ appointment.date|date('d-m-Y')|default() }}
+                                </small>
+                                <p>
+                                    {{ conversation.createdBy|default()|capitalize }}
+                                </p>
+                            </section>
+                        </header>
+                        <main>
+                            <div class="filler">
+                                <p>
+                                    {{ conversation.text|default() }}
+                                </p>
+                            </div>
+                        </main>
+                    </li>
+                {% endfor %}
+            {% endfor %}
             <li class="event appointment">
                 <span>Afspraak: ma 10 dec. 2019</span>
             </li>
@@ -122,9 +111,9 @@
                 </div>
             </main>
     {% endif %}
-
     </div>
 {% endblock %}
+
 {% block javascripts %}
     {{ parent() }}
     <script>
