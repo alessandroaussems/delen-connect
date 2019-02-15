@@ -14,6 +14,8 @@ sonata_admin:
         - { type: sonata.admin.block.admin_list, position: left }
     title_logo: 'img/delen.png'
     templates:
+        dashboard: 'admin/dashboard.html.twig'
+        layout: 'admin/standard_layout.html.twig'
     show_mosaic_button: false
 
 sonata_block:
