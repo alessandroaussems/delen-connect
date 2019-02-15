@@ -19,11 +19,11 @@
     {% if not app.user %}
         <!-- DO NOT LOAD NAV HERE -->
     {% else %}
-    <nav>
-
-        <img src="{{ asset('img/logo_delen.svg') }}" alt="Logo">
-        <a href="{{ path('logout') }}"></a>
-    </nav>
+        <nav>
+                <img src="{{ asset('img/logo_delen.svg') }}" alt="Logo">
+            <a href="{{ path('logout') }}">
+            </a>
+        </nav>
     {% endif %}
 {% block content %}{% endblock %}
 {% block javascripts %}
