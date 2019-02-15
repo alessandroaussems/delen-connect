@@ -21,15 +21,21 @@ class ClientController extends BaseController
 
     public function overview()
     {
-        $manager = $this->getUser();
+        $manager = '';
+        if ($this->getUser()) {
+            $manager = $this->getUser();
+        }
 
         $customers = $this->container->get('doctrine')->getManager()->getRepository('App:Customer')->findBy(
             array(
-                'account_manager' => $manager
+                'accountmanager' => $manager
             )
         );
 
-        return $this->render('default/client_overview.html.twig', array('customers' => $customers)
+        return $this->render('default/client_overview.html.twig', array(
+                'customers' => $customers,
+                'manager' => $manager
+            )
         );
     }
 }

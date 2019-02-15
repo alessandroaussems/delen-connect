@@ -3,11 +3,12 @@
 {% block content %}
 <div class="container-clients clearfix">
     <ul>
-        {% for c in customers|default() %}
+        {#{{ manager.username|default() }}#}
+        {% for c in manager.customer|default() %}
             <li>
                 <a href="{{ path('client_detail', { name: c.name|default('-'), id: c.id|default() }) }}">
                     <img src="{{ asset(c.image|default('img/person.png')) }}">
-                    <p>{{ c.name|default('Alexander Delen') }}</p>
+                    <p>{{ c.name|default('') }}</p>
                     <span></span>
                 </a>
             </li>

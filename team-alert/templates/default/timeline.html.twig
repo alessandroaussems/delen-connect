@@ -1,6 +1,14 @@
 {% extends 'layout.html.twig' %}
 {% block content %}
 
+    {#{% set merged_array = customer.happening|merge(customer.appointment) %}#}
+    {#{% set sorted_array = merged_array %}#}
+    {#{% for k,v in sorted_array %}#}
+        {#{% for order in sorted_array[k]|casttoarray %}#}
+            {#{{ dump(order) }}#}
+        {#{% endfor %}#}
+    {#{% endfor %}#}
+
     {% if customer|default() or accountmanager|default() %}
         <div class="container-timeline clearfix">
         <ul>
@@ -61,7 +69,6 @@
                     </li>
                 {% endfor %}
             {% endfor %}
-
 
             {#????#}
             <li class="event appointment">
