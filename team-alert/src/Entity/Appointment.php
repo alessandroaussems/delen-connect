@@ -34,6 +34,11 @@ class Appointment
      */
     private $date;
 
+    public function __toString()
+    {
+        return (string)$this->getId() ?: 'New';
+    }
+
     public function __construct()
     {
         $this->chattext = new ArrayCollection();

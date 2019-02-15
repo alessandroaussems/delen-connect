@@ -66,8 +66,11 @@ class ChattextAdmin extends AbstractAdmin
      */
     protected function configureFormFields(FormMapper $formMapper)
     {
+        if (!$this->hasParentFieldDescription()) {
+            $formMapper
+                ->add('appointment');
+        }
         $formMapper
-            ->add('appointment')
             ->add('text')
         ;
     }

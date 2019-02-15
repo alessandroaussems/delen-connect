@@ -20,6 +20,9 @@ class CustomerAdmin extends AbstractAdmin
         /** @var Appointment $appointment */
         foreach ($object->getAppointment() as $appointment) {
             $appointment->setCustomer($object);
+            foreach ($appointment->getChattext() as $chattext) {
+                $chattext->setAppointment($object);
+            }
         }
     }
 
