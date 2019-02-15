@@ -81,7 +81,7 @@ class Chattext
     public function __construct()
     {
         /** @var User $user */
-        $this->setCreatedBy($user->getUsername());
+
         $this->created = new \DateTime("now");
     }
 

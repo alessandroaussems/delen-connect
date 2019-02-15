@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+
+<title>Chattext index</title>
+
+{% block body %}
+    <h1>Chattext index</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Created</th>
+                <th>Updated</th>
+                <th>CreatedBy</th>
+                <th>Id</th>
+                <th>Text</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for chattext in chattexts %}
+            <tr>
+                <td>{{ chattext.created ? chattext.created|date('Y-m-d H:i:s') : '' }}</td>
+                <td>{{ chattext.updated ? chattext.updated|date('Y-m-d H:i:s') : '' }}</td>
+                <td>{{ chattext.createdBy }}</td>
+                <td>{{ chattext.id }}</td>
+                <td>{{ chattext.text }}</td>
+                <td>
+                    <a href="{{ path('chattext_show', {'id': chattext.id}) }}">show</a>
+                    <a href="{{ path('chattext_edit', {'id': chattext.id}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="6">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('chattext_new') }}">Create new</a>
+{% endblock %}

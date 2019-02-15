@@ -1,9 +1,17 @@
 <span class="add" onclick="showRemarkForm()"></span>
-<form method="POST" id="remarkform" class="hide">
-    <span class="close" onclick="hideRemarkForm()"></span>
-    <span id="eye" onclick="setVisible()"></span>
-    <label for="remarks">Uw opmerkingen?</label>
-    <textarea id="remarks"></textarea>
-    <input type="checkbox" style="display: none;" id="eyevalue" name="visible">
-    <button>Toevoegen</button>
-</form>
+    <form method="POST" action="/chattext/new" id="remarkform" class="hide">
+        <span class="close" onclick="hideRemarkForm()"></span>
+        <span id="eye" onclick="setVisible()"></span>
+        <label for="chattext_text">Uw opmerkingen?</label>
+
+        <div class="hide">
+            {{ form_widget(form.created) }}
+            {{ form_widget(form.updated) }}
+            {{ form_widget(form.createdBy) }}
+            {{ form_widget(form.appointment) }}
+        </div>
+        {{ form_widget(form.text, {'attr': {'class': 'textarea'}}) }}
+        <input type="checkbox" style="display: none;" id="eyevalue" name="visible">
+        <button type="submit">Toevoegen</button>
+    </form>
+<div class="" style="margin-bottom:200px;"></div>

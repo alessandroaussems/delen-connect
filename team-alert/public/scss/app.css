@@ -429,7 +429,7 @@ nav {
         padding-top: 0;
         font-size: 16px;
         margin-bottom: 0; }
-      .container-timeline aside form textarea {
+      .container-timeline aside form .textarea {
         outline: none;
         width: 97.5%;
         height: 100px;

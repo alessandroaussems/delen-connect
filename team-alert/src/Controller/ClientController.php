@@ -2,6 +2,9 @@
 
 namespace App\Controller;
 
+use App\Entity\Chattext;
+use App\Form\ChattextType;
+use DateTime;
 use Symfony\Component\HttpFoundation\Request;
 
 class ClientController extends BaseController
@@ -15,8 +18,21 @@ class ClientController extends BaseController
                 array('name' => $username)
             );
         }
+        $chattext = new Chattext();
+        $form = $this->createForm(ChattextType::class, $chattext);
+        $chattext->setCreated(new \DateTime("now"));
+        $form->handleRequest($request);
 
-        return $this->render('default/timeline.html.twig', array('customer' => $customer));
+        if ($request->isMethod('POST') && $form->isSubmitted()) {
+            $entityManager = $this->getDoctrine()->getManager();
+            $entityManager->persist($chattext);
+            $entityManager->flush();
+            return $this->redirectToRoute('client_timeline');
+        }
+        return $this->render('default/timeline.html.twig', array(
+            'customer' => $customer,
+            'form' => $form->createView()
+        ));
     }
 
     public function overview()

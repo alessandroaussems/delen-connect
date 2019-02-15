@@ -1,13 +1,9 @@
 {% extends 'layout.html.twig' %}
 {% block content %}
 
-    {#{% set merged_array = customer.happening|merge(customer.appointment) %}#}
-    {#{% set sorted_array = merged_array %}#}
-    {#{% for k,v in sorted_array %}#}
-        {#{% for order in sorted_array[k]|casttoarray %}#}
-            {#{{ dump(order) }}#}
-        {#{% endfor %}#}
-    {#{% endfor %}#}
+    {% set merged_array = customer.happening|merge(customer.appointment) %}
+    {% set sorted_array = merged_array %}
+    {{ dump(sorted_array) }}
 
     {% if customer|default() or accountmanager|default() %}
         <div class="container-timeline clearfix">
@@ -61,6 +57,7 @@
                         </header>
                         <main>
                             <div class="filler">
+                                <span class="fill"></span>
                                 <p>
                                     {{ conversation.text|default() }}
                                 </p>
@@ -91,12 +88,12 @@
         </ul>
         <aside>
             <!-- IF CLIENT -->
-            {#{% if customer|default() %}#}
-                {#{% include 'partials/client_add_remark.html.twig' %}#}
-                {#{% if 'afspraak' in app.request.uri %}#}
+            {% if customer|default() %}
+                {% include 'partials/client_add_remark.html.twig' %}
+                {% if 'afspraak' in app.request.uri %}
                     {% include 'partials/client_happiness.html.twig' %}
-                {#{% endif %}#}
-            {#{% endif %}#}
+                {% endif %}
+            {% endif %}
         </aside>
         <aside>
             <!-- IF ACCOUNT -->
