@@ -225,6 +225,12 @@ nav {
       padding: 20px 10px;
       position: relative;
       text-decoration: none; }
+      @media only screen and (max-width: 720px) {
+        .container-timeline ul li {
+          width: 90% !important;
+          max-width: 90% !important;
+          margin-left: auto !important;
+          margin-right: auto !important; } }
       .container-timeline ul li.client {
         margin-left: 7.5%; }
       .container-timeline ul li.account {
@@ -364,6 +370,14 @@ nav {
     left: 2.5%;
     width: 40%;
     top: 72.5vh; }
+    @media only screen and (max-width: 720px) {
+      .container-timeline form {
+        left: 0%;
+        right: 0%;
+        width: 90% !important;
+        max-width: 90% !important;
+        margin-left: auto !important;
+        margin-right: auto !important; } }
     .container-timeline form.pullright {
       left: 57.5%; }
     .container-timeline form#eventform {

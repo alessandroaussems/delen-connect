@@ -176,6 +176,12 @@ nav{
     width: 100%;
     li{
       margin-top: 1rem;
+      @media only screen and (max-width: 720px) {
+        width: 90% !important;
+        max-width: 90% !important;
+        margin-left: auto !important;
+        margin-right: auto !important;
+      }
       width: 40%;
       background-color: #fff;
       -webkit-border-radius: 2px;
@@ -363,6 +369,14 @@ nav{
     left: 2.5%;
     width: 40%;
     top: 72.5vh;
+    @media only screen and (max-width: 720px) {
+      left: 0%;
+      right: 0%;
+      width: 90% !important;
+      max-width: 90% !important;
+      margin-left: auto !important;
+      margin-right: auto !important;
+    }
     &.pullright{
       left: 57.5%;
     }
