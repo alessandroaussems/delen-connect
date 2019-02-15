@@ -26,4 +26,5 @@ return [
     Isometriks\Bundle\SpamBundle\IsometriksSpamBundle::class => ['all' => true],
     FOS\CKEditorBundle\FOSCKEditorBundle::class => ['all' => true],
     Symfony\Bundle\DebugBundle\DebugBundle::class => ['all' => true],
+    Sensio\Bundle\FrameworkExtraBundle\SensioFrameworkExtraBundle::class => ['all' => true],
 ];

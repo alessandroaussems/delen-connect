@@ -3,7 +3,7 @@ services:
         class: App\Admin\AccountManagerAdmin
         arguments: [~, App\Entity\AccountManager,  SonataAdminBundle:CRUD]
         tags:
-            - { name: sonata.admin, manager_type: orm, group: 'Managers', label: 'Account Manager', icon: '<i class="fa fa-user"></i>', show_in_dashboard: true }
+            - { name: sonata.admin, manager_type: orm, group: 'Managers', label: 'Account Managers', icon: '<i class="fa fa-user"></i>', show_in_dashboard: true }
         public: true
 
     app.admin.customer:

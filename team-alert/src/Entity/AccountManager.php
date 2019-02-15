@@ -42,7 +42,7 @@ class AccountManager
 
     public function __toString()
     {
-        return (string)$this->getId() ?: 'New';
+        return (string)$this->getName() ?: 'New';
     }
 
     public function getName(): ?string

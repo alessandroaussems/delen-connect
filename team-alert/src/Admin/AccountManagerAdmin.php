@@ -50,7 +50,7 @@ class AccountManagerAdmin extends AbstractAdmin
     {
         parent::configureListFields($listMapper);
         $listMapper
-            ->add('id')
+            ->add('name')
             ->add('_action', 'actions', array(
                 'actions' => array(
                     'show' => array(),
@@ -66,6 +66,7 @@ class AccountManagerAdmin extends AbstractAdmin
     protected function configureFormFields(FormMapper $formMapper)
     {
         $formMapper
+            ->add('name')
             ->add("customer");
     }
 

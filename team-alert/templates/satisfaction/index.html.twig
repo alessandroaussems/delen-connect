@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+
+<title>Satisfaction index</title>
+
+{% block body %}
+    <h1>Satisfaction index</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Score</th>
+                <th>Reason</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for satisfaction in satisfactions %}
+            <tr>
+                <td>{{ satisfaction.id }}</td>
+                <td>{{ satisfaction.score }}</td>
+                <td>{{ satisfaction.reason }}</td>
+                <td>
+                    <a href="{{ path('satisfaction_show', {'id': satisfaction.id}) }}">show</a>
+                    <a href="{{ path('satisfaction_edit', {'id': satisfaction.id}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="4">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('satisfaction_new') }}">Create new</a>
+{% endblock %}
