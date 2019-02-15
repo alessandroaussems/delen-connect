@@ -25,4 +25,5 @@ return [
     Translation\Bundle\TranslationBundle::class => ['all' => true],
     Isometriks\Bundle\SpamBundle\IsometriksSpamBundle::class => ['all' => true],
     FOS\CKEditorBundle\FOSCKEditorBundle::class => ['all' => true],
+    Symfony\Bundle\DebugBundle\DebugBundle::class => ['all' => true],
 ];

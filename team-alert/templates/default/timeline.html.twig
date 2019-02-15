@@ -3,6 +3,7 @@
     {{ customer }}
     {% for x in customer.appointment|default() %}
         {{ x.date|date('d-m-y') }}
+        {{ dump(x) }}
     {% endfor %}
     {% if customer|default() or accountmanager|default() %}
         <div class="container-timeline clearfix">
