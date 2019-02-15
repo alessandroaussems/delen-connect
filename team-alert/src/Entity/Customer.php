@@ -17,6 +17,11 @@ class Customer
     private $appointment;
 
     /**
+     * @ORM\OneToMany(targetEntity="App\Entity\Happening", mappedBy="customer", cascade={"all"}, orphanRemoval=true)
+     */
+    private $happening;
+
+    /**
      * @ORM\Id()
      * @ORM\GeneratedValue()
      * @ORM\Column(type="integer")
@@ -92,6 +97,7 @@ class Customer
     public function __construct()
     {
         $this->appointment = new ArrayCollection();
+        $this->happening = new ArrayCollection();
     }
 
     public function __toString()
@@ -249,6 +255,37 @@ class Customer
             // set the owning side to null (unless already changed)
             if ($appointment->getCustomer() === $this) {
                 $appointment->setCustomer(null);
+            }
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|Happening[]
+     */
+    public function getHappening(): Collection
+    {
+        return $this->happening;
+    }
+
+    public function addHappening(Happening $happening): self
+    {
+        if (!$this->happening->contains($happening)) {
+            $this->happening[] = $happening;
+            $happening->setCustomer($this);
+        }
+
+        return $this;
+    }
+
+    public function removeHappening(Happening $happening): self
+    {
+        if ($this->happening->contains($happening)) {
+            $this->happening->removeElement($happening);
+            // set the owning side to null (unless already changed)
+            if ($happening->getCustomer() === $this) {
+                $happening->setCustomer(null);
             }
         }
 
