@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+
+<title>Appointment index</title>
+
+{% block body %}
+    <h1>Appointment index</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Created</th>
+                <th>Updated</th>
+                <th>Id</th>
+                <th>Date</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for appointment in appointments %}
+            <tr>
+                <td>{{ appointment.created ? appointment.created|date('Y-m-d H:i:s') : '' }}</td>
+                <td>{{ appointment.updated ? appointment.updated|date('Y-m-d H:i:s') : '' }}</td>
+                <td>{{ appointment.id }}</td>
+                <td>{{ appointment.date ? appointment.date|date('Y-m-d H:i:s') : '' }}</td>
+                <td>
+                    <a href="{{ path('appointment_show', {'id': appointment.id}) }}">show</a>
+                    <a href="{{ path('appointment_edit', {'id': appointment.id}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="5">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('appointment_new') }}">Create new</a>
+{% endblock %}

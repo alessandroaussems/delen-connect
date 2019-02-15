@@ -1,0 +1,8 @@
+<!DOCTYPE html>
+
+<title>New Chattext</title>
+
+{% block body %}
+    {{ include('chattext/_form.html.twig') }}
+    <a href="{{ path('chattext_index') }}">back to list</a>
+{% endblock %}

@@ -50,6 +50,12 @@ class Appointment
      */
     private $date;
 
+    /**
+     * @ORM\Column(name="satisfaction_score", type="string", nullable=true)
+     */
+    private $satisfactionScore;
+
+
     public function __toString()
     {
         return (string)$this->getId() ?: 'New';
@@ -141,6 +147,18 @@ class Appointment
     public function setUpdated(?\DateTimeInterface $updated): self
     {
         $this->updated = $updated;
+
+        return $this;
+    }
+
+    public function getSatisfactionScore(): ?string
+    {
+        return $this->satisfactionScore;
+    }
+
+    public function setSatisfactionScore(?string $satisfactionScore): self
+    {
+        $this->satisfactionScore = $satisfactionScore;
 
         return $this;
     }

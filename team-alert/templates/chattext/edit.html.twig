@@ -1,0 +1,13 @@
+<!DOCTYPE html>
+
+<title>Edit Chattext</title>
+
+{% block body %}
+    <h1>Edit Chattext</h1>
+
+    {{ include('chattext/_form.html.twig', {'button_label': 'Update'}) }}
+
+    <a href="{{ path('chattext_index') }}">back to list</a>
+
+    {{ include('chattext/_delete_form.html.twig') }}
+{% endblock %}

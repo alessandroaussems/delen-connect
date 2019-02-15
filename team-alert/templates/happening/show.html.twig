@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+
+<title>Happening</title>
+
+{% block body %}
+    <h1>Happening</h1>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ happening.id }}</td>
+            </tr>
+            <tr>
+                <th>Created</th>
+                <td>{{ happening.created ? happening.created|date('Y-m-d H:i:s') : '' }}</td>
+            </tr>
+            <tr>
+                <th>Updated</th>
+                <td>{{ happening.updated ? happening.updated|date('Y-m-d H:i:s') : '' }}</td>
+            </tr>
+            <tr>
+                <th>OccurenceName</th>
+                <td>{{ happening.occurenceName }}</td>
+            </tr>
+            <tr>
+                <th>OccurenceDate</th>
+                <td>{{ happening.occurenceDate ? happening.occurenceDate|date('Y-m-d') : '' }}</td>
+            </tr>
+            <tr>
+                <th>OccurenceSymbol</th>
+                <td>{{ happening.occurenceSymbol }}</td>
+            </tr>
+            <tr>
+                <th>OccurenceType</th>
+                <td>{{ happening.occurenceType }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <a href="{{ path('happening_index') }}">back to list</a>
+
+    <a href="{{ path('happening_edit', {'id': happening.id}) }}">edit</a>
+
+    {{ include('happening/_delete_form.html.twig') }}
+{% endblock %}
