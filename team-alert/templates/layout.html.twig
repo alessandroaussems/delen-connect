@@ -15,6 +15,10 @@
     <meta name="google" content="notranslate">
     <link href="{{ asset('scss/app.css') }}" rel="stylesheet">
     <link rel="shortcut icon" type="image/png" href="/img/apple-touch-icon.png"/>
+    <script
+            src="https://code.jquery.com/jquery-3.3.1.min.js"
+            integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+            crossorigin="anonymous"></script>
 </head>
     {% if not app.user %}
         <!-- DO NOT LOAD NAV HERE -->
@@ -49,6 +53,21 @@
                 document.getElementById("eyevalue").setAttribute('checked', 'checked');
             }
         }
+        function addRemark(){
+            event.preventDefault();
+
+            document.getElementById("remarkform").classList.add("hide");
+            $("ul").append('<li class="client"> <header> <img src="/img/person.png" alt=""> <section> <small>vrij 15 feb. 2018</small> <p>Alessandro Aussems</p> </section> </header> <main> <p>'+document.getElementById("remarks").value+'</p> </main> </li>');
+            document.getElementById("remarks").value="";
+            $('html,body').animate({scrollTop: document.body.scrollHeight},"fast");
+        }
+        function addSatisfaction(){
+            event.preventDefault();
+            document.getElementById("satisfactionform").classList.add("hide");
+            $("ul").append('<li class="client"> <header> <img src="/img/person.png" alt=""> <section> <small>vrij 15 feb. 2018</small> <p>Alessandro Aussems</p> </section> </header> <main> <div class="filler"><p>Tevredenheid: 60%</p><span class="fill" style="width: 60%"></span></div></main> </li>');
+            $('html,body').animate({scrollTop: document.body.scrollHeight},"fast");
+        }
+        $('html,body').animate({scrollTop: document.body.scrollHeight},"fast");
     </script>
 {% endblock %}
 </body>

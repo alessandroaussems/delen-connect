@@ -8,6 +8,8 @@ security:
                     robbert: { password: XSJZ99982, roles: [ 'ROLE_ADMIN', 'ROLE_SUPER_ADMIN' ] }
                     alessandro: { password: XSJZ99982, roles: [ 'ROLE_ADMIN', 'ROLE_SUPER_ADMIN' ] }
                     koen: { password: XYZ123, roles: [ 'ROLE_ADMIN' ] }
+                    alexander: { password: XYZ123, roles: [ 'ROLE_ADMIN' ] }
+
     firewalls:
         dev:
             pattern: ^/(_(profiler|wdt)|css|images|js)/

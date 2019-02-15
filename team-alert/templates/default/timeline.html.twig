@@ -11,99 +11,103 @@
 
     {% if customer|default() or accountmanager|default() %}
         <div class="container-timeline clearfix">
+        <span class="line"></span>
         <ul>
-            {% for happening in customer.happening|default() %}
-                {#{{ happening.occurenceName|default() }}#}
-                {% if happening.occurenceType == 'eerste contact' %}
-                    <li class="event new" style="background-image:{{ asset(happening.occurenceSymbol|default('img/lamp.svg')) }}">
+            <li class="event new">
                         <span>
                             Eerste contact:
-                            {{ happening.occurenceDate|date('d-m-y')|default() }}
+                            ma 1 augustus 2010
                         </span>
-                    </li>
-                {% elseif happening.occurenceType == 'geboorte' %}
-                    <li class="event birth" style="background-image:{{ asset(happening.occurenceSymbol|default('img/birth.svg')) }}">
-                        <span>
-                            Geboorte:
-                            {{ happening.occurenceDate|date('d-m-y')|default() }}
-                        </span>
-                    </li>
-                {% elseif happening.occurenceType == 'huwelijk' %}
-                    <li class="event marriage" style="background-image:{{ asset(happening.occurenceSymbol|default('img/ring.svg')) }}">
-                        <span>
-                            Huwelijk:
-                            {{ happening.occurenceDate|date('d-m-y')|default() }}
-                        </span>
-                    </li>
-                {% elseif happening.occurenceType == 'afspraak' %}
-                    <li class="event new" style="background-image:{{ asset(happening.occurenceSymbol|default('img/calendar.svg')) }}">
-                        <span>
-                            Afspraak:
-                            {{ happening.occurenceDate|date('d-m-y')|default() }}
-                        </span>
-                    </li>
-                {% endif %}
-            {% endfor %}
-
-            {% for appointment in customer.appointment|default() %}
-                {% for conversation in appointment.chattext|default() %}
-                    <li class="client">
-                        <header>
-                            <img src="{{ asset('img/person.png') }}" alt="">
-                            <section>
-                                <small>
-                                    {{ appointment.date|date('d-m-Y')|default() }}
-                                </small>
-                                <p>
-                                    {{ conversation.createdBy|default()|capitalize }}
-                                </p>
-                            </section>
-                        </header>
-                        <main>
-                            <div class="filler">
-                                <p>
-                                    {{ conversation.text|default() }}
-                                </p>
-                            </div>
-                        </main>
-                    </li>
-                {% endfor %}
-            {% endfor %}
-
-            {#????#}
-            <li class="event appointment">
-                <span>Afspraak: ma 10 dec. 2019</span>
             </li>
-            {#????#}
 
             <li class="account">
                 <header>
                     <img src="{{ asset('img/person.png') }}" alt="">
                     <section>
-                        <small>ma 10 dec. 2019</small>
+                        <small>ma 1 aug. 2010</small>
                         <p>Erik Delen</p>
                     </section>
                 </header>
                 <main>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Atque dolorem est magnam perferendis placeat recusandae similique. Amet architecto, consequatur, earum enim eos fuga impedit maiores nemo, possimus quia quod temporibus.</p>
+                    <p>Klant heeft intresse om bepaalde investeringen te doen maar weet niet zo goed hoe.</p>
                 </main>
+            </li>
+            <li class="client">
+                <header>
+                    <img src="{{ asset('img/person.png') }}" alt="">
+                    <section>
+                        <small>di 2 aug. 2010</small>
+                        <p>Alessandro Aussems</p>
+                    </section>
+                </header>
+                <main>
+                    <p>Vond het een heel interessant gesprek, zeker intresse om nog kapitaal te investeren met behulp van delen.</p>
+                </main>
+            </li>
+            <li class="event appointment">
+                        <span>
+                            Afspraak:
+                            ma 1 sept. 2010
+                        </span>
+            </li>
+            <li class="client">
+                <header>
+                    <img src="{{ asset('img/person.png') }}" alt="">
+                    <section>
+                        <small>ma 2 sept. 2010</small>
+                        <p>Alessandro Aussems</p>
+                    </section>
+                </header>
+                <main>
+                    <p>Interessant gesprek over mijn recentste investeringen.</p>
+                </main>
+            </li>
+            <li class="account">
+                <header>
+                    <img src="{{ asset('img/person.png') }}" alt="">
+                    <section>
+                        <small>di 3 sept. 2010</small>
+                        <p>Erik Delen</p>
+                    </section>
+                </header>
+                <main>
+                    <p>Klant was zeer tevreden over onze laatste investering!</p>
+                </main>
+            </li>
+            <li class="event birth">
+                        <span>
+                            Geboorte:
+                            woe 4 okt. 2010
+                        </span>
+            </li>
+            <li class="event marriage">
+                        <span>
+                            Huwelijk:
+                            don 5 dec. 2010
+                        </span>
+            </li>
+            <li class="event appointment">
+                        <span>
+                            Afspraak:
+                            zat 4 jan. 2011
+                        </span>
             </li>
         </ul>
         <aside>
             <!-- IF CLIENT -->
-            {#{% if customer|default() %}#}
-                {#{% include 'partials/client_add_remark.html.twig' %}#}
-                {#{% if 'afspraak' in app.request.uri %}#}
+            {% if customer|default() %}
+                {% include 'partials/client_add_remark.html.twig' %}
+                {% if 'afspraak' in app.request.uri %}
                     {% include 'partials/client_happiness.html.twig' %}
-                {#{% endif %}#}
-            {#{% endif %}#}
+                {% endif %}
+            {% endif %}
         </aside>
         <aside>
             <!-- IF ACCOUNT -->
             {% if accountmanager|default() %}
                 {% include 'partials/account_add_remark.html.twig' %}
+                {% include 'partials/account_add_event.html.twig' %}
             {% endif %}
-            {% include 'partials/account_add_event.html.twig' %}
         </aside>
         {% else %}
             <main>
